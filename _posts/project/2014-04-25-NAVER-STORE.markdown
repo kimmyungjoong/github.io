@@ -1,21 +1,20 @@
 ---
 layout: project
-title:  "YOUR PROJECT NAME"
-date:   2014-04-25 16:54:46
-author: Marcel Newman
+title:  "NAVER STORE"
+date:   2013-10-14 16:54:46
+author: MJKIM
 categories:
 - project
-img: portfolio_02.jpg
-thumb: thumb02.jpg
+img: portfolio_01.jpg
 carousel:
-- single01.jpg
-- single02.jpg
-- single03.jpg
-tagged: Flat, UI, Development
-client: Wonder Corp.
-website: http://blacktie.co
+- store01.jpg
+- store02.jpg
+- store03.jpg
+tagged: 가변, UI, Development
+client: NAVER Corp.
+website: http://naverstore.naver.com
 ---
-####YOUR PROJECT NAME
+####NAVER STORE
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
 
 ####Our Proposal

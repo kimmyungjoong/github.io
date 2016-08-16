@@ -1,11 +1,11 @@
 ---
 layout: project
-title:  "YOUR PROJECT NAME"
+title:  "NAVER CONTENT SEARCH"
 date:   2014-04-25 16:54:46
 author: Marcel Newman
 categories:
 - project
-img: portfolio_05.jpg
+img: portfolio_10.jpg
 thumb: thumb02.jpg
 carousel:
 - single01.jpg

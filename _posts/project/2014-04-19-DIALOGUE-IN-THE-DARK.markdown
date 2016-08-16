@@ -1,11 +1,11 @@
 ---
 layout: project
-title:  "YOUR PROJECT NAME"
+title:  "DIALOGUE IN THE DARK"
 date:   2014-04-25 16:54:46
 author: Marcel Newman
 categories:
 - project
-img: portfolio_03.jpg
+img: portfolio_06.jpg
 thumb: thumb02.jpg
 carousel:
 - single01.jpg
