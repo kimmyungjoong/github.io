@@ -15,4 +15,4 @@ client: NAVER Corp.
 website: http://naverstore.naver.com
 ---
 ### NAVER STORE
-
+>네이버 스토어 프로젝트의 핵심은 메인 페이지 이미지 가변이었다.
