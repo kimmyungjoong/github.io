@@ -1,0 +1,25 @@
+---
+layout: project
+title:  "LINE SHOP"
+date:   2014-07-11
+author: MJKIM
+categories:
+- project
+img: portfolio_08.jpg
+
+carousel:
+- shop01.jpg
+- shop01.jpg
+- shop01.jpg
+tagged:  UI, Development, 최적화
+client: LINE Corp.
+website: https://shop.line.me/deals/home/
+---
+### LINE SHOP
+>Key point : 우리나라 보다 인터넷이 느린 나라여서 성능에 중점
+
+- 태국에서 오픈되었던 서비스
+- 이미지를 최소화 하고 이미지 용량을 최적화 시킴
+- 모바일을 기준으로 진행하여 PC로 확대
+
+*인터넷 속도에 상관없이 항상 최적화 하는 습관을 가지자*
