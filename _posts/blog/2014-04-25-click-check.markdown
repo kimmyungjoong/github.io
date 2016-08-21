@@ -19,7 +19,7 @@ thumb: thumb01.jpg
 
 >크롬 브라우저 기준으로 설명
 
-![북마크바 활성화](kimmyungjoong.github.io/assets/img/blog/link01.png)
+![북마크바 활성화](link01.png)
 
 
 [hampden]: https://github.com/jekyll/jekyll
