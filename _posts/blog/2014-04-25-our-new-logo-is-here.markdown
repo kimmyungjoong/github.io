@@ -3,10 +3,11 @@ layout: post
 title:  "Our new logo is here"
 date:   2014-04-25 16:54:46
 author: Admin
-categories: 
+categories:
 - blog
-- Web-Design
-- Development
+- html/css
+- javascript
+
 img: post02.jpg
 thumb: thumb02.jpg
 ---
