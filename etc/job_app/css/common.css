@@ -47,9 +47,9 @@ footer{width:960px; height:22px; background:url(../images/home/footer.gif) no-re
 table{width:100%; margin:20px 0 0 0; border-bottom:1px solid #dcdcdc; text-align:center; border-collapse:collapse; table-layout:fixed}
 table th{padding:10px 0; border-top:1px solid #e5e5e5; background-color:#f8fcfc;font-weight:bold}
 table td{padding:8px;border-top:1px solid #e5e5e5}
+table td p{line-height:20px}
 
 /* Etc */
-
 .textimg{margin:20px 0}
 h3.text{font-size:18px;}
 .text{margin:15px 0 0 0; line-height: 20px}
