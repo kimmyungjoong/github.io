@@ -3,7 +3,7 @@
 /* Common CSS */
 
 *{margin:0; padding:0;}
-body{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,AppleGothic,sans-serif; color:#7d7d7d; font-size:12px;}
+body{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,AppleGothic,sans-serif;color:#7d7d7d;font-size:14px}
 img{border:0;}
 ul,ol{list-style:none;}
 caption{display:none;}
