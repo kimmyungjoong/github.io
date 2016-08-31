@@ -28,7 +28,7 @@ a:hover, a:active, a:focus{text-decoration:underline; font-weight:bold;}
 header{margin:0 0 30px 0; *zoom:1; display:block;}
 header:after{content:""; clear:both; display:block;}
 header h1 a{width:430px; height:72px; background:url(../images/home/logo.gif) no-repeat; text-indent:-9999px; display:block; float:left;}
-header h1 a.ebay{background:url(../images/home/logo_sktechx.gif) no-repeat}
+header h1 a.sk{background:url(../images/home/logo_sktechx.gif) no-repeat}
 nav.gnb{width:280px; margin:25px 0 0 0; float:right; display:block;}
 nav.gnb ul li{float:left; margin:8px 0;}
 nav.gnb ul li a{display:block;}
