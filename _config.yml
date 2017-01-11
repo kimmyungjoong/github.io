@@ -10,7 +10,7 @@ url: "http://kimmyungjoong.github.io/"
 # Build settings
 markdown: kramdown
 permalink: /:categories/:title
-excerpt_separator: <!--more--> #use this in posts to define how long the excerpt of the post (that is shown on the Blog page) is
+excerpt_separator: <!-- more --> #use this in posts to define how long the excerpt of the post (that is shown on the Blog page) is
 
 colors:  #in hex code if not noted else
   primary: "#2E9BE2" #"#F70031"
@@ -36,7 +36,7 @@ social:
 # Postal address (add as many lines as necessary). Shown in footer and on Contact page.
 address:
   - lines:
-    - Gangwon-do , Chuncheon-si
+    - Gyeonggi-do, Namyangju-si
 
 ### GENERAL DATA FOR VARIOUS LOCATIONS ###
 
