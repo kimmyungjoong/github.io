@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+/* Common CSS */
+
+*{margin:0; padding:0;}
+body{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,AppleGothic,sans-serif;color:#7d7d7d;font-size:14px}
+img{border:0;}
+ul,ol{list-style:none;}
+caption{display:none;}
+dl{margin:0 0 20px 0;}
+dt, dd{float:left; font-weight:bold;}
+a{color:#7d7d7d; text-decoration:none;}
+a:hover, a:active, a:focus{text-decoration:underline; font-weight:bold;}
+
+/* 공통 Class */
+
+.float_l{float:left}
+.float_r{float:right}
+.clear{clear:both}
+.blind{display:block; overflow:hidden; position:absolute; top:-1000em; left:0;}
+.clear_div{ clear:both}
+/* Common Layout */
+
+#skipNav{position:relative;}
+#skipNav a {display:block; height:1px; width:1px; margin-bottom:-1px; overflow:hidden; font-size:20px; color:#fff; background:#97d942; white-space:nowrap;}
+#skipNav a:focus, #skipNav a:active {height:auto; width:100%; padding:5px; margin-bottom:10px;}
+#wrap{width:960px; margin:20px auto}
+header{margin:0 0 30px 0; *zoom:1; display:block;}
+header:after{content:""; clear:both; display:block;}
+header h1 a{width:430px; height:72px; background:url(../images/home/logo.gif) no-repeat; text-indent:-9999px; display:block; float:left;}
+header h1 a.sk{background:url(../images/home/logo_sktechx.gif) no-repeat}
+nav.gnb{width:280px; margin:25px 0 0 0; float:right; display:block;}
+nav.gnb ul li{float:left; margin:8px 0;}
+nav.gnb ul li a{display:block;}
+nav.gnb ul li.resume a{width:47px; height:18px; background:url(../images/home/gnbImg.gif) 0 0 no-repeat; text-indent:-9999px; margin:0 13px 0 0;}
+nav.gnb ul li.coverletter a{width:79px; height:18px; background:url(../images/home/gnbImg.gif) 0 -18px no-repeat; text-indent:-9999px; margin:0 13px 0 0;}
+nav.gnb ul li.portfolio a{width:124px; height:18px; background:url(../images/home/gnbImg.gif) 0 -37px no-repeat; text-indent:-9999px;}
+#container{width:930px; margin:0 0 30px 30px;}
+#container section.index{display:block; padding:100px 0;}
+#container section.index p{width:685px; height:201px; background:url(../images/home/maintext.gif) no-repeat; text-indent:-9999px;}
+#container article h2.resume{width:129px; height:46px; background:url(../images/sub1/h1_resume.gif) no-repeat; text-indent:-9999px; margin:0 0 20px 0;}
+#container article h2.coverletter{width:217px; height:46px; background:url(../images/sub2/h1_coverletter.gif) no-repeat; text-indent:-9999px; margin:0 0 20px 0;}
+#container article h2.portfolio{width:340px; height:48px; background:url(../images/sub3/h1_portfolio.gif) no-repeat; text-indent:-9999px; margin:0 0 20px 0;}
+footer{width:960px; height:22px; background:url(../images/home/footer.gif) no-repeat; text-indent:-9999px; display:block;}
+
+/* Table */
+table{width:100%; margin:20px 0 0 0; border-bottom:1px solid #dcdcdc; text-align:center; border-collapse:collapse; table-layout:fixed}
+table th{padding:10px 0; border-top:1px solid #e5e5e5; background-color:#f8fcfc;font-weight:bold}
+table td{padding:8px;border-top:1px solid #e5e5e5}
+table td p{line-height:20px}
+
+/* Etc */
+.textimg{margin:20px 0}
+h3.text{font-size:18px;}
+.text{margin:15px 0 0 0; line-height: 20px}
+.text01{margin:0 0 20px 0; float:left; font-weight:bold}
+.text02{margin:0 0 20px 0; float:right; font-weight:bold}
+.img01{float:left; margin:0 20px 10px 0;}
+.img02{float:right; margin:0 0 10px 20px;}
+.pfimg{margin:20px 0 0 0;}
+.spec{ margin-top:10px; margin-left:5px}
+.pf_sec{ margin-bottom: 50px}
