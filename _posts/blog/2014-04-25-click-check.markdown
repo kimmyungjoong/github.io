@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "링크 및 포커스 확인"
-date: 2016-08-21
+date: 2014-04-25
 author: MJKIM
 categories:
 - blog
