@@ -60,10 +60,12 @@ thumb: thumb03.jpg
 
 **6. package.json 파일 생성**
 
+정보 입력 시 무시하고 enter 다다닥! 마지막에 yes 입력
+
 ```
   npm init
 ```      
-정보 입력 시 무시하고 enter 다다닥! 마지막에 yes 입력      
+
 <br>
 
 **7. index 생성 모듈 설치**
