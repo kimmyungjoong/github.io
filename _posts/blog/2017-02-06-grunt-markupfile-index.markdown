@@ -59,6 +59,7 @@ thumb: thumb03.jpg
 <br>
 
 **6. package.json 파일 생성**
+
 ```
   npm init
 ```      
