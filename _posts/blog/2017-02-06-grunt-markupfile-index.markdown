@@ -62,7 +62,7 @@ thumb: thumb03.jpg
 ```
   npm init
 ```      
-*정보 입력 시 무시하고 enter 다다닥! 마지막에 yes 입력*      
+정보 입력 시 무시하고 enter 다다닥! 마지막에 yes 입력      
 <br>
 
 **7. index 생성 모듈 설치**
@@ -73,8 +73,12 @@ thumb: thumb03.jpg
 
 **8. 프로젝트 폴더(작업 폴더)내에 나만의 스타일로 커스텀 진행**
 
+<br>
+
 커스텀 파일위치 및 목록
+
 - node_modules/grunt-markupfileindex/tasks/markupfileindex.js
+
 - node_modules/grunt-markupfileindex/tpl/tpl.html
 
 <br>
