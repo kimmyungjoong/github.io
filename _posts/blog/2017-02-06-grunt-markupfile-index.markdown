@@ -157,6 +157,7 @@ thumb: thumb03.jpg
 <br>
 
 **Tip. 타이틀을 가져오는 HTML 코드 안내**
+
 ```
   <title>[그룹명] 타이틀명</title>
   <title>타이틀명</title>
