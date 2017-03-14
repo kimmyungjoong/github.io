@@ -29,8 +29,6 @@ thumb: thumb04.jpg
   	 
   if(strtotime('2017-03-14 11:00:00') < time() && time() < strtotime ('2017-03-15 10:59:59')){
   	$img_cover = '시간설정에 따른 변경될 이미지.jpg';		
-  }else if (strtotime('2017-03-15 11:00:00') < time()){
-  	$img_cover = '기존이미지.jpg';
   }
 ?>
 
