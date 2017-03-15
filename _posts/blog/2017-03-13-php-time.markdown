@@ -22,6 +22,12 @@ thumb: thumb04.jpg
 
 * PHP 구문을 사용하여 시간 설정에 따라 코드를 다르게 노출해보자.
 
+**그림 설명**
+
+![PHP 시간 설정](/assets/img/blog/php_time_process.png)
+
+**code view**
+
 ```
 <?php
 
