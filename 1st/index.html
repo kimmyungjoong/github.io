@@ -10,10 +10,27 @@
             img{vertical-align:top}
             a{display:block}
         </style>
+
     </head>
     <body>
         <img src="img/img.png" width="100%" alt="">
+        <div id="map" style="width:100%;height:450px">
+
+        </div>
         <img src="img/img2.png" width="100%" alt="">
         <a href="photo.html"><img src="img/img3.png" width="100%" alt=""></a>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=PDkuVaXb6EMeUI7IqTjk"></script>
+        <script>
+
+          var map = new naver.maps.Map('map', {
+              center: new naver.maps.LatLng(35.169933, 129.176105),
+              zoom: 80
+          });
+
+          var marker = new naver.maps.Marker({
+              position: new naver.maps.LatLng(35.169933, 129.176105),
+              map: map
+          });
+          </script>
     </body>
 </html>
