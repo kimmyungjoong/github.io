@@ -9,13 +9,78 @@
             *{margin:0;padding:0}
             img{vertical-align:top}
             a{display:block}
+            body {
+                position: relative;
+                color: #000;
+                -webkit-text-size-adjust: none;
+                word-wrap: break-word;
+                word-break: break-all;
+            }
+            body, input, textarea, select, table, button, code {
+                font-family: helvetica,AppleSDGothicNeo,sans-serif;
+                font-size: 14px;
+                line-height: 1.25em;
+            }
+            .uio_title {
+                position: relative;
+                left: 0;
+                margin: 27px 0 27px 0;
+                padding-bottom: 11px;
+                font-size: 22px;
+                line-height: 26px;
+                letter-spacing: -1.5px;
+            }
+            .uio_title .uio_title_bullet {
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                width: 19px;
+                height: 5px;
+            }
+            .theme_background {
+                background-color: #4d423d !important;
+            }
+            .list_info .item_title {
+                margin: 15px 0 1px;
+                font-size: 15px;
+                font-weight: 700;
+                color: #222;
+                line-height: 22px;
+            }
+            .list_info .item_description {
+                font-size: 15px;
+                color: #888;
+            }
+            .list_info .text {
+                display: block;
+                line-height: 22px;
+            }
         </style>
 
     </head>
     <body>
         <img src="img/img.png" width="100%" alt="">
-        <div id="map" style="width:100%;height:200px">
-
+        <div style="padding:0 25px">
+          <h3 class="uio_title"><span class="uio_title_bullet theme_background"></span>오시는길</h3>
+          <div id="map" style="width:100%;height:200px"></div>
+          <dl class="list_info">
+            <dt class="item_title">프리미엄 돌잔치 뷔페 빌라드이엘</dt>
+            <dd class="item_description">
+              <span class="text">부산광역시 해운대구 해운대로 799 부산해운대시티코아 7층</span>
+            </dd>
+            <dt class="item_title">전화번호</dt>
+            <dd class="item_description">
+              <span class="text">051-704-4433</span>
+            </dd>
+            <dt class="item_title">오시는길</dt>
+            <dd class="item_description">
+              <span class="text">장산역 10번출구 지하로 바로 연결됩니다.</span>
+            </dd>
+            <dt class="item_title">주차정보</dt>
+            <dd class="item_description">
+              <span class="text">주차 2시간 무료(600대 가능)</span>
+            </dd>
+          </dl>
         </div>
         <img src="img/img2.png" width="100%" alt="">
         <a href="photo.html"><img src="img/img3.png" width="100%" alt=""></a>
