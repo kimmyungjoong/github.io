@@ -51,10 +51,10 @@
       <div class="slider__item"><h1>5</h1></div>
     </div>
     <script>
-      var SHOWING_CLASS = "showing";
-      var firstSlide = document.querySelector(".slider__item:first-child");
+      const SHOWING_CLASS = "showing";
+      const firstSlide = document.querySelector(".slider__item:first-child");
       function slide() {
-        var currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+        const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
         if (currentSlide) {
           currentSlide.classList.remove(SHOWING_CLASS);
           const nextSlide = currentSlide.nextElementSibling;
