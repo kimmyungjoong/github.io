@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>위메프 그룹웨어시스템</title>
+    <link rel="stylesheet" href="ui.css">
+    <link rel="shortcut icon" href="http://gw.wemakeprice.com/images/20130627_WMP_favicon_16.PNG?dummy=2018122811">
+    <script src="http://gw.wemakeprice.com/portal/js/jquery.min.js"></script>
+</head>
+<body style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
+    <div id="gnb" name="gnb" style="height:26px;margin-top:0px;margin-left:0px;width:100%;">
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>위메프 그룹웨어시스템</title>
+    <script src="http://gw.wemakeprice.com/portal/Js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jquery.bpopup.min.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jqueryeasing.1.3.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jquery.msgbox.js"></script>
+    <link rel="stylesheet" id="theme" type="text/css" href="http://gw.wemakeprice.com/portal/css/msgbox/themes/bootstrap/css/jquery.msgbox.css">
+    <!--공통GNB관련 script:s-->
+    <script>
+        var bPopupObject;
+        document.domain = "wemakeprice.com";
+        ///즐겨찾기 설정
+        function openSetup() {
+
+            bPopupObject = $('#element_to_pop_up').bPopup({
+                escClose: false,
+                modalClose: false,
+                transition: 'slideIn',
+                transitionClose: 'slideBack',
+                content: 'iframe',
+                iframeAttr: ('width=1050px height=850px scrolling=no frameborder=0 border=0'),
+                loadUrl: 'http://gw.wemakeprice.com/portal/include/bookmark/setup', //Uses jQuery.load()
+                opacity: 0.5
+            });
+            return false;
+        }
+        ///E-HR 연결 링크
+        function LinkHR(URL, width, height) {
+            $(".jMsgbox-overlay").remove();
+            $(".jMsgbox-wrap").remove();
+            $("#element_to_pop_up").attr("href", URL);
+            $("#element_to_pop_up").msgbox({
+		title : 'HR',
+                type: 'iframe',
+                width: width,
+                height: height,
+                opacity: 0.5
+            }).click();
+	    $(".jMsgbox-title").css("font-size","12px");
+        }
+
+        $(document).ready(function () {
+
+            $("body").append("<div id=\"element_to_pop_up\" class=\"content\" style=\"position:absolute; display:none;\"></div>"); //e-hr팝업 레이어
+
+            //<!-- 우측 즐겨찾기 열린 상태 고정 -->
+            var bookmark_open = 'False';
+            if(bookmark_open.toLowerCase() == 'true')
+            {
+                $(".btn_favorite").css("background-position" , "0px  -26px");
+                $(".favorite_wrp").show();
+                $("#chkopensave").attr('checked', true);
+            }
+            $("#chkopensave").click(function () {
+                var chk_val = $(this).is(":checked") ? 1 : 0;
+                $.ajax("http://gw.wemakeprice.com/portal/api/oapi_savetoolbar_v1_setuser", {
+                    dataType: 'json',
+                    type: "POST",
+                    data: {
+                        'UserID': '2016110023',
+                        'GroupNo': '2',
+                        'ToolbarNo': '4',
+                        'IsUse': chk_val
+                    },
+                    crossDomain: true,
+                    success: function (data, textStatus, request) {
+                    }, error: function (httpObj, textStatus) {
+                        return null;
+                    }
+                });
+                return;
+            });
+            //<!--//우측 즐겨찾기 열린 상태 고정 -->
+
+            $(".q_set").click(function () {
+                if (parent.$('#parentTopIframe').attr("id") == undefined)
+                    location.href = 'http://gw.wemakeprice.com/myoffice/ezportal/index_portal.aspx?mode=myoption';
+                else
+                    parent.location.href = 'http://gw.wemakeprice.com/myoffice/ezportal/index_portal.aspx?mode=myoption';
+            });
+
+	          $(".btn_favorite").click(
+			  function() {
+			  	if( $(".favorite_wrp").css("display") != "block")
+			    {
+			    	$(this).css("background-position" , "0px  -26px");
+			    	 $(".favorite_wrp").show();
+			    }
+			     else
+			    {
+			    	$(this).css("background-position" , "0px  0px");
+			    	 $(".favorite_wrp").hide();
+			    }
+			  }
+			);
+
+			$( ".favorite_wrp .set_btn").hover(
+			  function() {
+			    $(this).css("background-position" , "0px  -17px");
+			  }, function() {
+			    $(this).css("background-position" , "0px  0px");
+			  }
+			);
+
+			$( ".my_setting_bx .preview_list li").hover(
+			  function() {
+			    $(this).css("border-color" , "#aaa");
+			  }, function() {
+			    $(this).css("border-color" , "#dbdbdb");
+			  }
+			);
+			$( ".my_setting_bx .preview_list li").hover(
+			  function() {
+			    $(this).css("border-color" , "#aaa");
+			  }, function() {
+			    $(this).css("border-color" , "#dbdbdb");
+			  }
+			);
+	});
+    </script>
+    <!--공통GNB관련 script:e-->
+
+
+
+    <!--gw_top_bar_wrp:s//공통GNB-->
+    <div class="gw_top_bar_wrp" style="position:relative;width:100%;height:26px;z-index:100;margin:0;padding:0;border:0;outline:0;font-family:'Malgun Gothic', sans-serif;font-size:12px;color:#444;">
+        <div class="gw_top_bar" style="position:relative;width:100%;min-width:620px;height:26px;">
+            <!--sub페이지에만 삽입:s-->
+            <!--sub페이지에만 삽입:e-->
+            <div class="quick_set" style="float:right;overflow:hidden;height:26px;background-color:#fff; ">
+                <div class="my_info" style="float:left;color:#999;line-height:25px;font-size:12px;letter-spacing:-0.5px;"><span class="name" style="color:#555;"><b>김명중</b> 님</span> (최종 로그인 <span class="time" style="display:inline-block;height:23px;padding-top:1px;vertical-align:top;line-height:24px;">12.26 09:37</span>) (구매후기 좋아요 <span class="n_like" style="display:inline-block;height:13px;margin-right:1px;padding:1px 3px 0px 2px;background-color:#888;border:1px solid #888;border-radius:4px;color:#fff;letter-spacing:-0.5px;text-align:center;font-size:11px;line-height:11px;">49</span>건)</div>
+                <ul class="q_menu" style="margin:0;padding:0;border:0;outline:0;list-style-type:none;float:left;padding-top:2px;margin-left:37px;">
+                    <li style="float:left;margin-left:10px;"><a href="javascript:void (window.open('http://gw.wemakeprice.com/myoffice/ezportal/person/personsearch.aspx', 'searchperson', 'width=692,height=550'));" class="q_person" title="직원검색" style="display:block;width:21px;height:22px;background:url(http://gw.wemakeprice.com/portal/images/bg_q_menu_sprite.gif) 0px 0px  no-repeat;"></a></li>
+                    <li style="float:left;margin-left:10px;"><a href="javascript:;" class="q_set" title="환경설정" style="display:block;width:21px;height:22px;background:url(http://gw.wemakeprice.com/portal/images/bg_q_menu_sprite.gif) 0px -27px  no-repeat;"></a></li>
+                    <li style="float:left;margin-left:10px;"><a href="javascript:;" onclick="void (window.open(&quot;http://gw.wemakeprice.com/help/help.aspx&quot;, &quot;helpWindow&quot;, &quot;height=700px,width=1000px, status = no, toolbar=no, menubar=no, location=no, resizable=0&quot;))" class="q_help" title="도움말" style="display:block;width:21px;height:22px;background:url(http://gw.wemakeprice.com/portal/images/bg_q_menu_sprite.gif) 0px -54px  no-repeat;"></a></li>
+                    <li style="float:left;margin-left:10px;"><a href="http://gw.wemakeprice.com/logout.aspx" class="q_logout" title="로그아웃" style="display:block;width:21px;height:22px;background:url(http://gw.wemakeprice.com/portal/images/bg_q_menu_sprite.gif) 0px -81px  no-repeat;"></a></li>
+                </ul>
+                <a href="javascript:;" class="btn_favorite" title="즐겨찾기" style="float:left;display:block;width:38px;height:26px;margin-left:20px;background:url(http://gw.wemakeprice.com/portal/images/bg_btn_favorite.gif) 0px 0px  no-repeat;"></a>
+            </div>
+            <div class="favorite_wrp" style="display:none;position:absolute;top:26px;right:0px;z-index:100;">
+
+                <div class="" style="float:left;width:198px;height:572px;border:1px solid #666;border-right:none;padding-top:15px;background-color:#fff;">
+                    <h3 style="float:left;margin:0;padding:0;padding-left:10px;height:26px;color:#444;font-weight:bold;font-size:16px;letter-spacing:-1px;line-height:18px;">즐겨찾기</h3>
+                    <a href="javascript:;" onclick="openSetup();" class="set_btn" style="float:right;display:block;width:15px;height:16px;margin-right:10px;margin-top:2px;background: url(http://gw.wemakeprice.com/portal/images/bg_btn_set.gif) 0 0px no-repeat;"></a>
+                    <div class="my_setting_bx" style="display:block;margin:0;padding:0;clear:both;background-color:#fff;padding:10px 10px 0px 4px;">
+                        <ul class="preview_list" style="overflow:hidden;list-style-type:none;margin:0;padding:0;">
+
+<li style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;"><a href="http://gw.wemakeprice.com" style="display:table;width:74px;height:74px;padding:0px 5px;background-color:#fff;color:#555;font-size:14px;text-align:center;vertical-align:middle;letter-spacing:-0.5px;text-decoration:none;line-height:18px;"><span style="display:table-cell;vertical-align:middle;">그룹웨어홈</span></a></li>
+
+<li style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;"><a href="/myoffice/redirect_security.aspx?protocol=http&amp;host=voice.wemakeprice.com&amp;port=&amp;path=loginUserGW.wmp&amp;param1=loginUserId&amp;param2=securityCode" style="display:table;width:74px;height:74px;padding:0px 5px;background-color:#fff;color:#555;font-size:14px;text-align:center;vertical-align:middle;letter-spacing:-0.5px;text-decoration:none;line-height:18px;"><span style="display:table-cell;vertical-align:middle;">보이스</span></a></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+<li onclick="openSetup()" class="blank" style="float:left;width:84px;height:74px;margin-left:6px;margin-bottom:6px;border:1px solid #dbdbdb;background:#f7f7f7 url(http://gw.wemakeprice.com/portal/images/bg_plus.gif) center center no-repeat;cursor:pointer;"></li>
+
+                        </ul>
+                        <p class="chk_open" style="margin:0;padding:0;margin-left:7px;margin-top:9px;"><label style="vertical-align:middle;color:#555;letter-spacing:-0.5px;font-size:12px;"><input id="chkopensave" type="checkbox" style="vertical-align:middle;">&nbsp;접속시 열린상태 고정</label></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    <!--gw_top_bar_wrp:e-->
+    <script type="text/javascript">
+
+            $("#theme").attr('href', "http://gw.wemakeprice.com/portal/css/msgbox/themes/" + 'bootstrap' + "/css/jquery.msgbox.css");
+
+    </script>
+
+
+</div>
+
+    <!--groupwear_wrp:s-->
+    <section class="groupwear_wrp">
+
+
+
+
+
+
+
+
+<header id="groupware_menu_layer" style="z-index:50;">
+    <!--main_menu_wrp:s-->
+    <div class="main_menu_wrp">
+        <a href="/portal/home"><h1><span class="blind">GROUPWEAR</span></h1></a>
+        <ul class="main_menu">
+            <li groupno="1" noti="Office365는 Microsoft에서 제공하는 Office프로그램으로 프로그램을 사용하여 업무 시 필요한 문서를 모든 플랫폼에서 작업할 수 있다는 장점이 있습니다."><a href="https://outlook.office.com/owa/?realm=wemakeprice.com&amp;exsvurl=1&amp;ll-cc=1042&amp;modurl=0" target="_blank" class="menu01" name="menuGroup" groupno="1"><span class="blind">Office365</span></a></li><li groupno="2" noti="전자결재는 각종 업무에 필요한 양식을 온라인으로 상식하고 결재하는 시스템으로 히스토리 관리에 용이합니다."><a href="/myoffice/ezportal/index_portal.aspx?mode=approval&amp;listtype=1" target="_self" class="menu02" name="menuGroup" groupno="2"><span class="blind">전자결재</span></a></li><li groupno="3" noti="HR은 휴가, 급여, 복리 등 개인과 관련된 결재 기능을 제공합니다."><a href="http://hr.wemakeprice.com:8080" target="_blank" class="menu03" name="menuGroup" groupno="3"><span class="blind">HR</span></a></li><li groupno="4" noti="위메프의 사내서비스는 일반, 영업, 인사, 경영, 교육총무구매 분야로 운영되고 있습니다."><a href="javascript:;" target="_self" class="menu04" name="menuGroup" groupno="4"><span class="blind">사내시스템</span></a></li><li groupno="5" noti="게시판에는 공지사항, 게시판, 그룹웨어 사용 가이드 등이 포함되어 있으며 사내의 중요하고 유용한 알림 사항을 확인할 수 있습니다."><a href="/myoffice/ezportal/index_portal.aspx?mode=board&amp;boardid={70ce2334-6595-89c8-29ed-d1fc05815820}" target="_self" class="menu05" name="menuGroup" groupno="5"><span class="blind">게시판</span></a></li>
+        </ul>
+    </div>
+    <!--main_menu_wrp:e-->
+    <!--sub_bx:s-->
+    <div class="sub_bx" name="menulist" style="display:none;">
+    </div>
+    <!--sub_bx:e-->
+</header>
+
+    <!--top_conts:s-->
+    <div class="top_conts">
+        <!--my_info_section:s-->
+        <div class="my_info_section">
+            <!--profile_wrp:s-->
+            <div class="profile_wrp">
+                <div class="photo_bx">
+                    <img src="http://hr.wemakeprice.com:8080/hrfile/WMP/picture/Thum/2016110023.JPG" style="width:100px;height:157px;">
+                </div>
+                <div class="profile_bx">
+                    <dl class="profile_info">
+                        <dt class="name"><span>김명중 </span>님</dt>
+                        <dd class="team">운영디자인팀</dd>
+                    </dl>
+                    <ul class="day_info">
+                        <li>2018.12<span class="day"><b>28</b><em>일(금)</em></span></li>
+                        <li class="wonder">원더맨<span class="day"><b>774</b><em>일째</em></span></li>
+                        <li>잔여휴가<span class="day"><b>0</b>/15</span></li>
+                    </ul>
+                    <div class="my_btns">
+                        <a href="/myoffice/ezportal/index_portal.aspx?mode=myoption" class="btn_set">환경설정</a>
+                        <a href="javascript:;" class="btn_break" onclick="void(window.open('/portal/hr/popup/approvalmgr','hr_popup','width=700,height=700'));">휴가신청</a>
+                    </div>
+                </div>
+
+            </div>
+            <!--profile_wrp:e-->
+            <!--schedule_wrp:s-->
+            <div class="schedule_wrp">
+
+
+    <ul class="schedule_menu">
+        <li class="m_schedule">
+            <a href="javascript:;" tabindex="0">
+일정
+            </a>
+        </li>
+        <li class="m_mail on">
+            <a href="javascript:;" tabindex="1">
+메일
+            </a>
+        </li>
+        <li class="m_sign">
+            <a href="javascript:;" tabindex="2">
+전자결재
+            </a>
+        </li>
+    </ul>
+    <div class="schedule_conts_wrp" id="calendar" tabindex="0" style="display:none;">
+        <ul class="top_tab_list">
+            <li><a href="javascript:;" eqindex="0">오늘 일정 <span class="num">(0)</span></a></li>
+            <li><a href="javascript:;" eqindex="1">이번 주 일정 <span class="num">(0)</span></a></li>
+            <li><a href="javascript:;" eqindex="2">이번 달 일정 <span class="num">(0)</span></a></li>
+            <li class="setting">
+                <a href="javascript:;" name="bookmark_check" class="btn_favorite" toolbarno="1"><span class="blind">즐겨찾기</span></a>
+                <div class="tooltipArea">
+                    <span href="javascript:;" class="ico_help"></span>
+                    <div class="tooltip right"><span>[일정]</span>탭을 기본탭으로 지정합니다.</div>
+                </div>
+            </li>
+        </ul>
+        <div class="schedule_conts schedule">
+            <ol class="s_list" style="display:none;">
+                <li class="no_result">
+                    등록된 일정이 없습니다.
+                </li>
+            </ol>
+            <ol class="s_list" style="display:none;">
+                <li class="no_result">
+                    등록된 일정이 없습니다.
+                </li>
+            </ol>
+            <ol class="s_list" style="display:none;">
+                <li class="no_result">
+                    등록된 일정이 없습니다.
+                </li>
+            </ol>
+        </div>
+        <a class="btn_more" href="javascript:void (window.open('https://outlook.office.com/owa/?realm=wemakeprice.com&amp;exsvurl=1&amp;ll-cc=1042&amp;modurl=0'))" target="_blank">더보기</a>
+    </div>
+    <div class="schedule_conts_wrp" id="mail" tabindex="1" style="">
+        <ul class="top_tab_list">
+            <li class="on"><a href="javascript:;" eqindex="0">받은 편지함</a></li>
+            <li class=""><a href="javascript:;" eqindex="1">보낸 편지함</a></li>
+            <li class="setting">
+                <a href="javascript:;" name="bookmark_check" class="btn_favorite sel" toolbarno="2"><span class="blind">즐겨찾기</span></a>
+                <div class="tooltipArea">
+                    <span href="javascript:;" class="ico_help"></span>
+                    <div class="tooltip right"><span>[메일]</span>탭을 기본탭으로 지정합니다.</div>
+                </div>
+            </li>
+        </ul>
+        <div class="schedule_conts mail">
+            <ol class="m_list" style="">
+                <li class="no_result">
+                    메일함이 비었습니다.
+                </li>
+            </ol>
+            <ol class="m_list" style="display:none;">
+                <li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAH5BIXGAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">Re: [광고배너2팀][사내배너]  12월 26일 노출 배너 요청드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-26<text>(</text>수) 10:02</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAH08z9ZAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">[문의] 인터넷 연결오류건</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-20<text>(</text>목) 11:47</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHzgcZnAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">Re: [광고배너2팀][사내배너] 12월 19일 노출 배너 요청드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-18<text>(</text>화) 17:19</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHwJPyUAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">Re: 개인정보 업데이트</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-13<text>(</text>목) 14:23</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHuQtSNAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">Re: [광고배너2팀][사내배너] 12월 11일 / 12월 12일 이메일푸터 수정요청드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-10<text>(</text>월) 14:48</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHuQtSMAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">메일서명 바꾸세욥</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-10<text>(</text>월) 11:03</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHsSlxcAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">서비스디자인팀 2018 업무 리스트 전달 건_김명중</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/12-07<text>(</text>금) 11:14</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHg5UJQAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고배너2팀][사내배너] 11월 22일 배너 변경 관련 요청드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-21<text>(</text>수) 10:18</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHdkmbGAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">[부재중 알림] 11/19(월) 부재 공유 드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-16<text>(</text>금) 15:55</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHdkmbFAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [사내대출] 서비스디자인팀 김명중</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-15<text>(</text>목) 11:06</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHdkmbEAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">[사내대출] 서비스디자인팀 김명중</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-15<text>(</text>목) 11:00</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHZVYqxAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고배너2팀][사내배너] 11월 8일 ~ 11월 11일 배너 변경 예정 관련 요청드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-08<text>(</text>목) 09:17</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHUoiC1AAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고디자인] 사내배너 수정 및 추가 셋팅 요청_10/31(수)</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/11-01<text>(</text>목) 14:43</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHTs%2BrkAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고디자인] 사내배너 수정 및 추가 셋팅 요청_10/31(수)</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/10-31<text>(</text>수) 16:41</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAHHVWhVAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">3분기 평가 제출_김명중</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/10-12<text>(</text>금) 16:25</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAG9Tag%2BAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고디자인] 사내배너 셋팅 요청(1010데이/타겟클릭)_09/27(목)</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/09-27<text>(</text>목) 19:13</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAG04nrIAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고디자인] 이메일푸터 셋팅요청(최저가 집중 판촉정책, 타겟클릭)_09/17(월)</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/09-17<text>(</text>월) 10:39</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAG0ZQ%2FGAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: [광고디자인팀] 사내배너 셋팅 요청(선정산서비스, 타겟클릭)_09/13(목)</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/09-13<text>(</text>목) 17:08</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAGiVD1GAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">[부재중 공유] 8월 20일 (월) 부재 공유드립니다.</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/08-17<text>(</text>금) 16:09</em></span>
+                </li><li class="">
+                                                            <a href="javascript:;" onclick="void (window.open('https://outlook.office365.com/owa/?ItemID=AAMkAGRjMDM2ZGE5LTQ0YzYtNDIyYS04MzliLTUwN2VjNjg3OWVhZQBGAAAAAAAxfhRPJCf2Rra7NYYWWSaoBwC0IfZCVC0hS7FSVysTlPxtAAAAAAEJAAC0IfZCVC0hS7FSVysTlPxtAAGUbQZsAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem&amp;ispopout=1&amp;wid=90', '', 'width=1000,height=800'));" target="_self" class="title_link">RE: 사원증 분실</a>
+                    <span class="date_info"><b class="name">김명중</b><em class="info">/07-27<text>(</text>금) 14:10</em></span>
+                </li>
+            </ol>
+        </div>
+        <a class="btn_more" href="javascript:void (window.open('https://outlook.office.com/owa/?realm=wemakeprice.com&amp;exsvurl=1&amp;ll-cc=1042&amp;modurl=0'))">더보기</a>
+    </div>
+    <div id="approval" class="schedule_conts_wrp" tabindex="2" style="display:none;">
+        <ul class="top_tab_list">
+            <li class="on"><a href="javascript:;" eqindex="0">결재할 문서 <span class="num">(0)</span></a></li>
+            <li><a href="javascript:;" eqindex="1">기안한 문서 <span class="num">(0)</span></a></li>
+            <li><a href="javascript:;" eqindex="2">반송된 문서 <span class="num">(0)</span></a></li>
+            <li><a href="javascript:;" eqindex="3">부서수신함_도착/진행 <span class="num">(0)</span></a></li>
+            <li class="setting">
+                <a href="javascript:;" name="bookmark_check" class="btn_favorite" toolbarno="3"><span class="blind">즐겨찾기</span></a>
+                <div class="tooltipArea">
+                    <span href="javascript:;" class="ico_help"></span>
+                    <div class="tooltip right"><span>[전자결재]</span>탭을 기본탭으로 지정합니다.</div>
+                </div>
+            </li>
+        </ul>
+        <div class="schedule_conts sign">
+            <ol class="m_list" style="display:none;">
+                <li class="no_result">
+                    전자결재함이 비었습니다.
+                </li>
+
+            </ol>
+            <ol class="m_list" style="display:none;">
+                <li class="no_result">
+                    전자결재함이 비었습니다.
+                </li>
+
+            </ol>
+            <ol class="m_list" style="display:none;">
+                <li class="no_result">
+                    전자결재함이 비었습니다.
+                </li>
+
+            </ol>
+            <ol class="m_list" style="display:none;">
+                <li class="no_result">
+                    전자결재함이 비었습니다.
+                </li>
+
+            </ol>
+        </div>
+        <a class="btn_more" href="javascript:void (window.open('https://outlook.office.com/owa/?realm=wemakeprice.com&amp;exsvurl=1&amp;ll-cc=1042&amp;modurl=0'))">더보기</a>
+    </div>
+    <script type="text/javascript" src="/myoffice/ezapproval/lang/ezapproval.js"></script>
+    <script type="text/javascript">
+            var HasInternetExplorer = false;
+
+        var CurrentTabIndex = "0";
+        var Favorite_Checked = 0;
+
+            if (CurrentTabIndex == '0')
+            {
+                CurrentTabIndex = '1';
+            }
+            Favorite_Checked = '2';
+
+        var CurrentEqIndex = "0";
+        var pUserID = "2016110023";
+    </script>
+    <script type="text/javascript" src="/portal/js/workflow.js?v=636815924426720739"></script>
+
+</div>
+            <!--schedule_wrp:e-->
+        </div>
+        <!--my_info_section:e-->
+    </div>
+    <!--top_conts:e-->
+    <!--bottom_conts:s-->
+    <div class="bottom_conts">
+        <!--article_conts:s-->
+        <article class="article_conts">
+
+            <!-- 전사회의 배너 -->
+            <!--//전사회의 배너 -->
+
+            <h2 class="blind">그룹웨어 본문 컨텐츠</h2>
+            <!--notice:s-->
+
+            <div class="notice_bx notice" id="notice_bx_notice">
+                <div class="tit_set">
+                    <h3>공지사항</h3>
+                    <a href="http://gw.wemakeprice.com/myoffice/ezportal/index_portal.aspx?mode=board&amp;boardid={70ce2334-6595-89c8-29ed-d1fc05815820}" class="btn_more" style="">더보기</a>
+                </div>
+                <ul class="tab_list">
+                    <li class="on"><a href="javascript:;">전사공지</a></li>
+                    <li class="btn_set"><a href="javascript:;" name="notice_setup"><span class="blind">설정</span></a></li>
+                </ul>
+                    <ol class="noti_list" style="">
+                        <li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={322884D7-8146-4C8A-8664-69B5CA42E553}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[인사] 2018년 4분기 평가시행 및 일정 안내</a><span class="ico_file"></span><span class="ico_new"></span><span class="date">18.12.27</span></li><li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={E253BFD7-CCF7-477B-A85C-5380067B809C}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[인사] 2018년 12월 장기근속 포상 대상자 선정의 건</a><span class="ico_new"></span><span class="date">18.12.27</span></li><li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={5E3C1EB1-9C12-465B-A0C4-0B3ED32868BE}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[재무] 2018년 12월 경비마감 공지</a><span class="ico_new"></span><span class="date">18.12.27</span></li><li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={B2550416-59E7-4A04-B828-AB187262FD71}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[공지] 12월 정보보안 점검의 날 및 클린데이 시행안내 -..</a><span class="date">18.12.26</span></li><li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={37C1BF74-8C0B-4E5A-85AD-E7300D1D5493}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[총무] 2018년 12월 냉장고 청소 안내</a><span class="date">18.12.24</span></li><li><a href="javascript:void(window.open('http://gw.wemakeprice.com/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=1&amp;ItemID={801D8ACD-3D02-4897-95A4-CE093D394043}&amp;BoardID={70ce2334-6595-89c8-29ed-d1fc05815820}','noticepop','width=500,height=700'));" target="_self">[인사] 2018년 12월 패밀리 데이 운영 안내(12월 26일)</a><span class="date">18.12.24</span></li>
+                    </ol>
+
+            </div>
+            <!--notice:e-->
+            <!--alram:s-->
+            <div class="notice_bx alram" id="notice_bx_pushservice">
+                <div class="tit_set">
+                    <h3>새소식</h3><!--Description HJ edit 161007:문구수정-->
+                    <a href="javascript:;" class="btn_more" style="" systemid="0">더보기</a>
+
+                </div>
+                <ul class="tab_list">
+                    <li class="on"><a href="javascript:;">전체</a></li>
+
+                    <li class="btn_set"><a href="javascript:;" name="pushservice_setup"><span class="blind">설정</span></a></li>
+                </ul>
+                    <ol class="noti_list" style="">
+                        <li><a href="/myoffice/ezportal/index_portal.aspx?mode=approval" target="_blank">[결재완료] 무선사용 신청합니다.</a><span class="date">16.11.15</span></li>
+                    </ol>
+
+            </div>
+            <!--alram:e-->
+            <!--banner_bx:s-->
+            <div class="banner_bx">
+                <div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 336px;"><ul class="banner_slider" style="width: auto; position: relative;">
+                    <li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; display: none; visibility: visible;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{7477bf5f-1f86-d61d-4ff3-85b74f7b9a55}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{554296c7-987d-41d8-aced-f72c7a149e4c}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{554296c7-987d-41d8-aced-f72c7a149e4c}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{de3e809c-4435-bf44-996d-a2149f9a4e2e}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{7DD8CE6F-847A-4b7d-BAF7-54A636DEA31E}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{7DD8CE6F-847A-4b7d-BAF7-54A636DEA31E}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: list-item; opacity: 0.226576;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{c66b56b7-f591-d825-065c-b88e821bb3ee}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{62373dc0-0339-466f-8dd0-3712a482a937}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{62373dc0-0339-466f-8dd0-3712a482a937}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 51; visibility: visible; display: list-item; opacity: 0.773424;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{54c51a4a-17c2-e59d-075a-8af7be1f0c50}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{a3771bcc-dfec-4039-8e57-40da058e46eb}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{a3771bcc-dfec-4039-8e57-40da058e46eb}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{a44f8f7d-9df1-4208-af6f-bb4ce467a1ae}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{59539bbb-c62f-4ddf-9852-3f3eccf1853c}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{59539bbb-c62f-4ddf-9852-3f3eccf1853c}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{89c8b4b0-b4b4-2bf4-1eaa-3c05c6f8438d}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{350a2812-e06f-4151-ad27-497be3a7ec14}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{350a2812-e06f-4151-ad27-497be3a7ec14}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{017b4b8d-c2c9-3643-62f5-a049d3363af1}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{1a468045-66a5-4fa8-9ffa-93d7809bdb01}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{1a468045-66a5-4fa8-9ffa-93d7809bdb01}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{587183d3-c002-1a2e-4484-8922301f4061}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{62a34c12-c2f7-48ec-8a94-bfb030274e64}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{62a34c12-c2f7-48ec-8a94-bfb030274e64}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{158ed267-0b0f-528a-465c-a667d40ae60d}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{cc2f375a-4452-426c-a157-7000f13f5358}.png                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{cc2f375a-4452-426c-a157-7000f13f5358}.png                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li><li class="slider" style="float: none; list-style: none; position: absolute; width: 238px; z-index: 0; visibility: visible; display: none;">
+                    <a href="javascript:;" onclick="RollingImage_onclick('{df0e169a-3eb7-5b67-e653-0821b63476b1}','{b3233c93-74ca-f0bc-ad1a-6c921a814669}', '/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{a5e53e61-e28e-4796-82d3-27a483188e88}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   ')" class="link">
+                        <img src="/Upload_BoardSTD/{b3233c93-74ca-f0bc-ad1a-6c921a814669}/UploadFile/{a5e53e61-e28e-4796-82d3-27a483188e88}.jpg                                                                                                                                                                                                                                                                                                                                                                                                                   " alt="">
+                    </a>
+                    </li>
+                </ul></div><div class="bx-controls bx-has-pager"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link active">4</a></div><div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div><div class="bx-pager-item"><a href="" data-slide-index="5" class="bx-pager-link">6</a></div><div class="bx-pager-item"><a href="" data-slide-index="6" class="bx-pager-link">7</a></div><div class="bx-pager-item"><a href="" data-slide-index="7" class="bx-pager-link">8</a></div><div class="bx-pager-item"><a href="" data-slide-index="8" class="bx-pager-link">9</a></div><div class="bx-pager-item"><a href="" data-slide-index="9" class="bx-pager-link">10</a></div></div></div></div>
+            </div>
+            <!--banner_bx:e-->
+            <!--qa:s-->
+
+
+            <div class="notice_bx qa">
+                <div class="tit_set">
+                    <h3>그룹웨어 Q&amp;A</h3>
+                    <a href="/myoffice/ezportal/index_portal.aspx?mode=board&amp;boardid={83bdab13-7114-70a0-c6e9-3d90a545f8bb}" class="btn_more">더보기</a>
+                </div>
+                <ol class="noti_list" style="margin-top: 13px;border-top: 1px solid #dbdbdb;">
+
+                    <li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={4B1891BA-060F-41FD-BBEE-B065B9DE7A5D}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [가이드] office365 outlook 메 ... </a><span class="date">18.11.23</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={F97FD07D-F980-4EE9-8FFC-7D8B7D3BA3FC}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [가이드] 그룹웨어 비밀번호 재 설정</a><span class="date">18.10.19</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={23E12FB1-F717-4CFC-BB49-D62EEE6F9C22}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [문제해결] 특정 메일이 계속 수신 불가할 경 ... </a><span class="date">18.10.19</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={0f408925-2b73-449d-9331-94167b68f378}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [가이드] Office365 이용 가이드 V4 ... </a><span class="date">17.01.11</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={36DCE7D0-0CE0-454C-AD72-2803E905346C}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [가이드] New 그룹웨어 가이드 </a><span class="date">16.10.27</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={336071E5-CC3D-4923-AFAB-6AF225E3B363}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [가이드] 메일 회수하기</a><span class="date">16.09.19</span></li><li><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={259fc721-8443-4194-91af-a885d0f7e292}&amp;BoardID={83bdab13-7114-70a0-c6e9-3d90a545f8bb}','boardpop','width=757,height=645'))"> [기타안내] 구글 계정 생성 신청방법</a><span class="date">16.09.01</span></li>
+                </ol>
+            </div>
+            <!--qa:e-->
+            <!--qa:s-->
+
+
+            <div class="notice_bx qa">
+                <div class="tit_set">
+                    <h3>사내 커뮤니티 보이스(VOICE)</h3>
+                    <a href="/myoffice/ezportal/index_portal.aspx?mode=board&amp;boardid={b4a2fece-931d-42c4-0135-84c245cf45f2}" class="btn_more">더보기</a>
+                </div>
+                <ol class="noti_list" style="margin-top: 13px;border-top: 1px solid #dbdbdb;">
+
+                    <li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={71920F1B-5674-4800-9094-A6C2D9F0DAB1}&amp;BoardID={4c010b49-f8db-2696-4cf7-bdd4f6a69c79}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[자유게시판] [통합숙박팀] 지역별 인기시설 온라인 최저가  ... </a><!-- /div--><span class="date">18.12.26</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={B8D7BA2C-A565-4466-8808-CE25D7D7814A}&amp;BoardID={4c010b49-f8db-2696-4cf7-bdd4f6a69c79}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[자유게시판] [공사안내] W카페 대치점 </a><!-- /div--><span class="date">18.12.24</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={43AB68E5-4584-43E5-A069-139A744AB887}&amp;BoardID={34fef32b-dcff-8bfc-3702-40b47ab636a6}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[원더맨 이야기] [사내 특별이벤트] 감사의 마음을 전하는 원더 ... </a><!-- /div--><span class="date">18.12.23</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={09F6FB5F-B7B2-4B31-914B-75275AF81F41}&amp;BoardID={34fef32b-dcff-8bfc-3702-40b47ab636a6}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[원더맨 이야기] '질문있습니다, 대표님!' - 뉴스레터 &lt; ... </a><!-- /div--><span class="date">18.12.23</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={B476A454-ABE7-491E-9FA5-A18693EEA883}&amp;BoardID={4c010b49-f8db-2696-4cf7-bdd4f6a69c79}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[자유게시판] [12/21~26] 크리스마스, 연말도 빈방특 ... </a><!-- /div--><span class="date">18.12.21</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={C99883C1-CE24-41B6-81EE-47357B51D8C8}&amp;BoardID={34fef32b-dcff-8bfc-3702-40b47ab636a6}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[원더맨 이야기] [레드카펫 인터뷰] 79편 안주환 파트장님,  ... </a><!-- /div--><span class="date">18.12.21</span></li><li><!-- div style="width:300px;overflow:hidden; text-overflow: ellipsis;"--><a href="javascript:;" onclick="void(window.open('/myoffice/ezBoardSTD/BoardItemView_Cross.aspx?ShowAdjacent=&amp;ItemID={79CFA200-FE3A-4F3D-ABCB-44ABB78696D1}&amp;BoardID={b4a2fece-931d-42c4-0135-84c245cf45f2}','boardpop','width=757,height=645'))" style="width:300px; overflow:hidden; text-overflow: ellipsis;">[뉴스레터] We Make 위메프_201812.21</a><!-- /div--><span class="date">18.12.21</span></li>
+                </ol>
+            </div>
+            <!--qa:e-->
+
+            <!--down_bx:s-->
+            <!-- 20170718 UXUI-863 수정 -->
+            <!-- 20181228 DESIGNOP-12 수정 -->
+            <div class="down_bx">
+                <div class="tit_set">
+                    <h3>다운로드</h3>
+                    <a href="javascript:;" class="btn_more" style="display:none;">더보기</a>
+                </div>
+                <ul class="down_list">
+                    <li>
+                        <div class="down_tit">
+                            <strong>wIEsetting</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>그룹웨어 리스트 보이지 않는 경우</span>
+                            <a class="btn" href="http://gw.wemakeprice.com/wIESetting.exe">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>그룹웨어 컴포넌트</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>전자결재 첨부/의견 문제있을 경우</span>
+                            <a class="btn" href="http://gw.wemakeprice.com/Upload_Portal/KaoniComponent.zip">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>HR 컴포넌트</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>HR 증명서류 인쇄 문제있을 경우</span>
+                            <a class="btn" href="http://gw.wemakeprice.com/upload_portal/hr_download_setup_files.zip">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>HR 컴포넌트 - 패치</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>HR 증명서류 인쇄 문제있을 경우 (추가)</span>
+                            <a class="btn" href="http://gw.wemakeprice.com/upload_portal/6.0u_ocx_patch.zip">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>Silverlight PlugIN</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>HR 증명서류 첨부 문제있을 경우</span>
+                            <a class="btn" href="https://www.microsoft.com/silverlight/" target="_blank">다운로드</a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>회사소개서/공용서식</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>회사소개서/업무 문서 서식</span>
+                            <a class="btn" href="https://wmp.sharepoint.com/wmpcultule/DocLib/Forms/AllItems.aspx?newTargetListUrl=%2Fwmpcultule%2FDocLib&amp;id=%2Fwmpcultule%2FDocLib%2F%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C%20%EB%B0%8F%20%EA%B3%B5%EC%9A%A9%EC%84%9C%EC%8B%9D&amp;sortField=LinkFilename&amp;isAscending=true" target="_blank">다운로드</a>
+                            <!-- <a class="btn" href="https://wmp.sharepoint.com/wmpcultule/DocLib/Forms/AllItems.aspx?newTargetListUrl=%2Fwmpcultule%2FDocLib&id=%2Fwmpcultule%2FDocLib%2F%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C%20%EB%B0%8F%20%EA%B3%B5%EC%9A%A9%EC%84%9C%EC%8B%9D&sortField=LinkFilename&isAscending=true" target="_blank">다운로드</a> -->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>사내 메신저</strong>
+                        </div>
+                        <div class="down_conts">
+                            <span>사내 메신저 클라이언트</span>
+                            <a class="btn" href="#" target="_blank">다운로드</a>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- //20181228 DESIGNOP-12 수정 -->
+            <!-- //20170718 UXUI-863 수정 -->
+            <!--down_bx:e-->
+        </article>
+        <!--article_conts:s-->
+    </div>
+    <!--bottom_conts:e-->
+
+
+        <!--footer_wrp:s-->
+
+
+<div class="footer_wrp">
+<footer>
+    <span class="logo"><span class="blind">고객의 돈과 시간을 아껴주는 위메프</span></span>
+    <article>
+        <ul>
+            <li><a href="http://www.wemakeprice.com" target="_blank">위메프</a></li>
+            <li><a href="http://company.wemakeprice.com/wmp/" target="_blank">기업소개</a></li>
+            <li><a href="http://ethics.wemakeprice.com" target="_blank">윤리제보</a></li>
+            <li><a href="javascript:void(window.open('/myoffice/ezportal/privacy_pop.html?v=20181101','privacypop','scrollbars=yes, toolbar=no, menubar=no, location=no ,height=1019,width=985'));" class="point">개인정보처리방침</a></li>
+        </ul>
+        <aside>
+            <span>(주)위메프 (대표이사 : 박은상)</span><span class="line">주소 : 서울특별시 강남구 영동대로 502 위메프빌딩</span><span class="line">사업자등록번호 : 120-87-55227</span><br>
+            <span>통신판매업신고번호 : 제 2010 서울 강남 02066호</span><span class="line">관광사업등록번호 : 제2010-000024호</span><span class="line">고객센터 (tec@wemakeprice.com)</span>
+        </aside>
+        <small>COPYRIGHT © WEMAKEPRICE INC.  ALL RIGHTS RESERVED.</small>
+    </article>
+</footer>
+</div>
+        <!--footer_wrp:e-->
+
+    </section>
+    <!--groupwear_wrp:e-->
+
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jquery.bpopup.min.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jqueryeasing.1.3.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/jquery.ba-postmessage.min.js"></script>
+    <script src="http://gw.wemakeprice.com/portal/js/jquery.bxslider.min.js"></script>
+    <script src="http://gw.wemakeprice.com/portal/js/ui.common.js"></script>
+    <script src="http://gw.wemakeprice.com/portal/js/ui.gw.js?v=636815924416753754"></script>
+    <script src="http://gw.wemakeprice.com/portal/js/html5shiv.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/include/gnb2.0.js?v=636815924416753754"></script>
+    <script type="text/javascript">
+        main_sub_flag = true;
+        gw_sso_cn = "2016110023";
+        gw_sso_token = "2yO3Zmvpk5eyEncbyZM2PVa5/WOniLsHowYHDGJNPuC5CpH7Ijn49N/f7Q1TdiJLnvkPavqCf57ofYvUGgu5DmEQUlfQ72Cxi8oHzcFxAA6jNQ+bpZNnbJSqsaX/jOUiN/w/ycknS4gQ68IC1KQbJz/RnxJ5jo5O";
+        gw_sso_login = "2018-12-26T09:37:04";
+    </script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/myoffice/common/XmlHttpRequest.js"></script>
+    <script type="text/javascript" src="http://gw.wemakeprice.com/myoffice/ezapproval/aprmanage_comm.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({ cache: false });
+    </script>
+
+
+
+    <script type="text/javascript" src="http://gw.wemakeprice.com/portal/js/main.js"></script>
+    <script type="text/javascript">
+
+    </script>
+
+
+
+<div id="element_to_pop_up" class="content" style="position:absolute; display:none;"></div></body></html>
