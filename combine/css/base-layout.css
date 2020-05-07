@@ -1,0 +1,143 @@
+/* 사이드바 스타일 설정 */
+#leftArea { overflow-x:hidden; border-right:#D5E2E2 1px solid }
+#leftArea div.logo { display:block; width:100%; height:120px; background-color:#EB0C00; text-align: center;}
+#leftArea div.logo a { color:#fff; height: 116px; line-height: 116px;}
+#leftArea div.account-status { width:100%; height:60px; text-align:left; padding:0.5em 1em; }
+#leftArea div.account-status span.name, #leftArea div.account-status a.pwd-change-link { display:block !important; margin:0.5em 0; }
+#leftArea div.account-status span.name { color:#fff; }
+#leftArea div.account-status span.name strong { font-weight:bold !important; }
+#leftArea div.account-status span.name small { font-size:95%; }
+#leftArea div.account-status div.account-selector { margin-top:3px; }
+#leftArea div.account-status a.pwd-change-link { color:#FF9FA1; }
+#leftArea div.account-status a.pwd-change-link:hover { text-decoration:underline; color:#FFD2D6; }
+
+#leftArea div.nav { padding:1em; margin:1em 0; }
+#leftArea div.nav ul {  }
+#leftArea div.nav > ul > li { border-width:0 0 1px 0; border-style:solid; border-color:#D5E2E2; }
+#leftArea div.nav > ul > li:last-child { border:none !important; }
+#leftArea div.nav > ul > li:hover { border-color:#535858; }
+#leftArea div.nav > ul > li ul { display:none; min-height:80px; height:auto; position:relative; padding-left:1em; background-color:#F7F6F4; }
+#leftArea div.nav > ul > li ul li button:hover { color:#EB0C00 !important; }
+
+#leftArea div.nav button, #leftArea div.nav a { display:inline-block !important; height:100%; outline:none; }
+#leftArea div.nav button { width:90%; }
+#leftArea div.nav button a { width:10%; }
+#leftArea div.nav button { border:none; height:100%; cursor:pointer; background-color:transparent; text-align:left; font-size:1em; padding:1em 0.5em; }
+
+#leftArea div.copyright { margin:0; padding:0 1em; text-align:left; }
+
+.location span strong { font-weight: bold !important }
+
+/**************************************************************************************************************************************
+ * 공통 플러그인과 연동하여 작동되는 스타일시트 코드입니다.
+ * 함부로 수정하면 곤란해집니다 ㅎㅎㅎ;;
+ **************************************************************************************************************************************/
+
+/* 탭브라우징 스타일 설정 */
+#tabBrowser { width:100%; min-height: 600px; height:auto;  }
+#tabBrowser .controller { background:transparent url('/img/bg_tab.gif') repeat-x 0 37px; height:37px; padding-bottom:1px !important; }
+#tabBrowser .controller li { margin:0 !important; padding:0; border-style:solid; border-width:1px; border-color:#8697ae #fff #8697ae #8697ae; background-color:#fff;  }
+#tabBrowser .controller li a { text-indent:-10px; }
+#tabBrowser .controller li.selected { border-bottom-color:#fff; background:transparent url('/img/tab-bg-top.png') repeat-x left top;  }
+#tabBrowser .controller li button { border:none !important; background-color:transparent !important; top:10px; right:5px; }
+#tabBrowser .controller li button:hover { color:#EE0700; }
+
+#tabBrowser div.viewer { min-height:600px; height:auto; }
+#tabBrowser div.viewer > div { min-height:600px; height: auto; padding:0.3em; }
+
+/* 탭브라우징 플러그인 스타일 설정 - 커스텀 */
+#tabBrowser .controller li:last-child { border-right-color:#8697ae; }
+
+/* 다이얼로그 재개발 */
+*[data-widget="dialog"] { position: absolute; z-index:1000; min-height: 150px; height: auto; display: none; }
+*[data-widget="dialog"].dialog {
+    box-sizing:border-box;
+    padding: 35px;
+    background: #fff;
+    border: 1px solid #6e7e91;
+    border-top: 4px solid #757c88;
+    -moz-box-sizing:border-box;
+    -webkit-box-shadow: 3px 3px 15px #afafaf;
+    -moz-box-shadow: 3px 3px 15px #afafaf;
+    box-shadow: 3px 3px 15px #afafaf;
+}
+*[data-widget="dialog"].dialog h1 { color:#3d4c61; font-size:1.4em !important; padding-bottom: 10px; font-weight: bold !important; }
+*[data-widget="dialog"].dialog h2 { color:#3d4c61; font-size:1.2em !important; padding-bottom: 10px; font-weight: bold !important; }
+*[data-widget="dialog"].dialog.dialog-width450 { width:450px; }
+*[data-widget="dialog"].dialog.dialog-width550 { width:550px; }
+*[data-widget="dialog"].dialog.dialog-width650 { width:650px; }
+*[data-widget="dialog"].dialog.dialog-width900 { width:900px; }
+
+/* ListUI 컴포넌트 스타일 설정 */
+*[data-widget="list-ui-component"] { }
+
+*[data-widget="list-ui-component"] ul li { position: relative; }
+*[data-widget="list-ui-component"] ul li > span[data-list-items="control"] button { display:inline-block !important; margin:0 !important; font-size:normal; }
+*[data-widget="list-ui-component"] ul li > span[data-list-items="content"] { display: block !important; width:100%; height:100%; }
+
+/**[data-widget="list-ui-component"] ul > li > ul { display: block !important; }*/
+
+*[data-widget="list-ui-component-template"] { display: none !important; }
+
+/* Default Style : 공통적으로 사용되는 스타일에 대하여 강제적으로 설정합니다. */
+.ui-custom-select {
+    padding-left: 10px;
+    font-size: 12px;
+    /* line-height: 2; */
+    border: 1px solid #dbe3ec;
+    /*border-radius: 3;*/
+    height: 25px;
+    -webkit-appearance: none;
+    background:#fff url("../img/arr_select.gif") right 0 no-repeat !important;
+    /*background:#fff url("/resource/common/img/arr_select.gif") right 0 no-repeat;*/
+    color:#58616d !important;
+}
+select::-ms-expand,
+.ui-custom-select::-ms-expand {
+    display: none !important; opacity: 0 !important;
+}
+.text-bold { font-weight: bold !important; }
+.text-normal { font-weight: normal !important; }
+.text-left { text-align: left !important }
+.text-center { text-align: center !important }
+.text-right { text-align: right !important }
+.small5 { font-size:50% !important; font-weight: normal !important }
+.no-margin { margin:0 !important; }
+.left-no-margin { margin-left:0 !important; }
+.right-no-margin { margin-right:0 !important; }
+.top-no-margin { margin-top:0 !important; }
+.bottom-no-margin { margin-bottom:0 !important; }
+.vertical-no-margin { margin-top:0 !important; margin-bottom: 0 !important; }
+.horizontal-no-margin { margin-left:0 !important; margin-right:0 !important; }
+.no-padding { padding:0 !important }
+.left-no-padding { padding-left:0 !important; }
+.right-no-padding { padding-right:0 !important; }
+.top-no-padding { padding-top:0 !important; }
+.bottom-no-padding { padding-bottom:0 !important; }
+.vertical-no-padding { padding-top:0 !important; padding-bottom: 0 !important; }
+.horizontal-no-padding { padding-left:0 !important; padding-right:0 !important; }
+
+.display-none { display: none !important; }
+.display-block { display: block !important; }
+.position-abs { position: absolute !important; }
+.position-rel { position: relative !important; }
+.position-fix { position: fixed !important; }
+.z-index { z-index:99999 !important; }
+
+.no-border,
+table.no-border,
+table.no-border-all { border:none !important; }
+
+table.no-border-all tbody,
+table.no-border-all thead,
+table.no-border-all tr,
+table.no-border-all td { border:none !important; }
+
+/* BaseLink */
+a.base-link,
+a.base-link:link,
+a.base-link:visited { text-decoration: none !important; }
+a.base-link:active,
+a.base-link:hover { text-decoration: underline !important; }
+
+/**************************************************************************************************************************************/

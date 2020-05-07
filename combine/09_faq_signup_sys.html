@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="description" content="위메프 통합문 시스템">
+	<meta name="keywords" content="위메프 통합문의 시스템">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<title>관리메뉴 &gt; 자주묻는질문(등록) : 통합문의</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="lib/jqwidgets/styles/jqx.base.css" />
+	<link rel="stylesheet" href="css/common_admin.css">
+	<link rel="stylesheet" href="css/inquiry_admin.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.custom.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.jkun.tabbrowse.css">
+	<link rel="stylesheet" type="text/css" href="css/base-layout.css">
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.common.icon.css">
+	<link rel="stylesheet" type="text/css" href="lib/fileupload/css/jquery.fileupload.css" />
+
+	<!-- Library -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/jquery-1.11.0.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/jquery-ui.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/moment.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/ui.srcCommon.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/placeholders.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/customSelect.min.js"></script>
+
+	<!-- jqwidgets -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxcore.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxdatetimeinput.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxcalendar.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxtooltip.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/globalization/globalize.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/globalization/globalize.culture.ko-KR.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/jquery.jkun.tabbrowse.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/js-dev-helper.jkun.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/ui.common-extend.js"></script>
+
+	<!-- fileupload -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/vendor/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/load-image.min.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload-process.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload-image.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.filedownload.js"></script>
+
+	<!-- 통합시스템 공통 js -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.common.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.inquiry.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.back.js"></script>
+
+	<!-- User Defined Java script -->
+	<script src="http://inquiry.wemakeprice.com:8080/js/common/module.js"></script>
+
+	<!-- Page Context -->
+	<script>
+		var CONTEXT_PATH = "";
+	</script>
+
+	<style>
+		/* 20160725 common_admin.css의 경우 퍼블리셔가 업데이트 할 경우가 발생할수 있어 딤드관련 css 추가합니다. */
+		.loading {
+			position: absolute;
+			z-index: 100001;
+			display: block;
+		}
+
+		.dimmLoading {
+			overflow: hidden;
+		}
+
+		.dimmLoading:after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 10000;
+			display: block;
+			height: 100%;
+			background: #000;
+			content: "";
+			opacity: .2;
+			filter: alpha(opacity=20);
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+
+			var flag = window.location.href.split("/");
+			if (flag[3] == "admin") {
+				$(".left_menu_wrp .left_menu #menu04").addClass("on");
+			} else if (flag[3] == "inquirer") {
+				$(".left_menu_wrp .left_menu #menu02").addClass("on");
+			} else if (flag[3] == "assignee") {
+				$(".left_menu_wrp .left_menu #menu03").addClass("on");
+			} else if (flag[3] == "main") {
+				$(".left_menu_wrp .left_menu #menu01").addClass("on");
+			}
+		});
+
+		function getCookie(name) {
+			var nameOfCookie = name + "=";
+			var x = 0
+
+			while (x <= document.cookie.length) {
+				var y = (x + nameOfCookie.length);
+				if (document.cookie.substring(x, y) == nameOfCookie) {
+					if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+						endOfCookie = document.cookie.length;
+					return unescape(document.cookie.substring(y, endOfCookie));
+				}
+				x = document.cookie.indexOf(" ", x) + 1;
+				if (x == 0)
+					break;
+			}
+			return "";
+		}
+	</script>
+</head>
+
+<body>
+	<input type="hidden" name="inStartdate" value="">
+	<input type="hidden" name="inEnddate" value="">
+	<input type="hidden" name="asStartdate" value="">
+	<input type="hidden" name="asEnddate" value="">
+	<!--inquiry_admin_wrp:s-->
+	<div class="inquiry_admin_wrp">
+		<!--header:s-->
+		<div class="header">
+			<div class="top_bar">
+				<div class="logo"><img src="/img/logo.gif" alt="위메프"></div>
+				<div class="my_info">운영디자인팀 <span class="name">김명중</span>님</div>
+			</div>
+			<h1 class="title"><span class="blind">통합문의시스템</span></h1>
+		</div>
+		<!--header:e-->
+		<!--admin_conts_wrp:s-->
+		<div class="admin_conts_wrp">
+			<!--left_menu_wrp:s-->
+			<script src="http://inquiry.wemakeprice.com:8080/js/layout/menu.js"></script>
+
+			<div class="left_menu_wrp">
+				<ul class="left_menu">
+					<li id=""><a href="#none">HOME</a></li>
+					<li id=""><a href="#none">공지사항</a></li>
+					<li id=""><a href="#none">자주묻는질문</a></li>
+					<li id=""><a href="#none">문의 리스트</a></li>
+					<li id=""><a href="#none">처리 리스트</a></li>
+					<li id=""><a href="#none">시스템 관리</a></li>
+					<li id="" class="open on">
+						<a href="#none">관리메뉴</a>
+						<ol>
+							<li><a href="#">공지사항</a></li>
+							<li class="on"><a href="#">자주묻는질문</a></li>
+						</ol>
+					</li>
+				</ul>
+			</div>
+			<!--left_menu_wrp:e-->
+			<!--contents_wrp:s-->
+			<div class="contents_wrp">
+				<div class="contents">
+					<div class="cont_inner">
+						<input type="hidden" id="myId" value="2016110023" />
+						<input type="hidden" id="myCateIds" value="[51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 79, 80, 107, 110, 114, 128, 132, 135, 160, 161, 162, 163]" />
+						<input type="hidden" id="isManager" value="n" />
+						<input type="hidden" id="isManageIds" value="[]" />
+							<div class="title_area">
+								<h1>관리메뉴 &gt; 자주묻는질문</h1>
+								<ol class="location">
+									<li>통합문의시스템 &gt;</li>
+									<li>관리메뉴 &gt;</li>
+									<li>자주묻는질문 &gt;</li>
+									<li class="cur_page">등록하기</li>
+								</ol>
+							</div>
+							<h2 class="tb_title first">등록하기</h2>
+							<table class="tb_basic vertical" width="100%">
+								<colgroup>
+									<col width="140px">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>번호</th>
+										<td>100</td>
+									</tr>
+									<tr>
+										<th>등록자</th>
+										<td>위메프(2017060019)</td>
+									</tr>
+									<tr>
+										<th>수정자</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>등록일(수정일)</th>
+										<td>2017-09-19</td>
+									</tr>
+									<tr>
+										<th>노출</th>
+										<td class="radio_td">
+											<input type="radio" name="show_radio" id="chk01" checked><label for="chk01">노출</label>
+											<input type="radio" name="show_radio" id="chk02"><label for="chk02">비노출</label>
+										</td>
+									</tr>
+									<tr>
+										<th>스티커</th>
+										<td class="radio_td">
+											<input type="radio" name="sti_radio" id="chk03" checked><label for="chk03">미지정</label>
+											<input type="radio" name="sti_radio" id="chk04"><label for="chk04">NEW</label>
+											<input type="radio" name="sti_radio" id="chk05"><label for="chk05">긴급</label>
+											<input type="radio" name="sti_radio" id="chk06"><label for="chk06">필독</label>
+										</td>
+									</tr>
+									<tr>
+										<th>시스템</th>
+										<td class="radio_td">
+											<input type="radio" name="sys_radio" id="chk07" checked><label for="chk07">인사교육</label>
+											<input type="radio" name="sys_radio" id="chk08"><label for="chk08">프론트/어드민/파트너</label>
+											<input type="radio" name="sys_radio" id="chk09"><label for="chk09">정산시스템</label>
+											<input type="radio" name="sys_radio" id="chk10"><label for="chk10">총무</label>
+											<input type="radio" name="sys_radio" id="chk11"><label for="chk11">통계</label>
+											<input type="radio" name="sys_radio" id="chk12"><label for="chk12">그룹웨어</label>
+										</td>
+									</tr>
+									<tr>
+										<th>카테고리</th>
+										<td>
+											<select id="first_category" style="width:224px;">
+												<option>전체</option>
+											</select>
+											<select id="second_category" style="width:224px;">
+												<option>전체</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th>제목</th>
+										<td>
+											<input type="text" style="width:100%" name="subject" id="subject" placeholder="제목을 입력해주세요">
+										</td>
+									</tr>
+									<tr>
+										<th>상세내용</th>
+										<td class="txtarea_td">
+											<textarea name="comment" id="comment" placeholder="html 에디터 영역" style="height:330px;"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<th>첨부파일</th>
+										<td>
+											<div class="upload_bx">
+				                <a class="btn_etc">파일선택<input name="questionFiles" id="fileupload1" onchange="javascript:file_change(this);" type="file"></a>
+				                <span class="file_name_bx" id="fileName_1" style="text-overflow:ellipsis;white-space:nowrap;overflow: hidden;"></span>
+				                <a id="delBtn_1" href="javascript:minus_file_input('fileTr1','none')" class="btn_fileDel" style="display:none;"><span class="blind">삭제</span></a>
+				                <a id="inputFilePlus1" href="javascript:puls_file_input(this);" class="btn_fileAdd"><span class="blind">추가</span></a>
+				                <a id="InputFileMinus1" href="javascript:minus_file_input_NEW(fileTr1,0)" class="btn_fileExept"><span class="blind">제외</span></a>
+				                <p class="cmmt">최대 10M까지 업로드 가능합니다</p>
+				            	</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btnArea_right">
+								<a href="#" class="btnType_cSrch_s pre_view" onclick="window.open('popup_preview.html','preview','width=850,height=750');return false;">미리보기</a>
+							</div>
+							<div class="btnArea">
+								<a href="#" class="btn_type_big_bcgr first" onclick="CommonUI.modal('#pop_signup');return false;">등록하기</a>
+								<a href="#" class="btn_type_big_whbd" onclick="CommonUI.modal('#pop_cancel');return false;">취소</a>
+							</div>
+
+						<div id="pop_signup" style="display:none;">
+							<!-- popWrap -->
+							<div class="popWrap450">
+								<div class="popHead">
+									<h1>등록하기</h1>
+								</div>
+								<div class="popContents">
+									<div class="alert_bx">
+										<p class="msg">입력하신 내용을 등록 하시겠습니까?</p>
+									</div>
+									<div class="btnArea">
+										<a href="#" id="confirm" class="btn_type_big_bcgr first">확인</a>
+										<a href="#" onclick="CommonUI.modalClose('#pop_signup');" class="btn_type_big_whbd">취소</a>
+									</div>
+								</div>
+								<div class="btn_pop_close">
+									<a href="#" onclick="CommonUI.modalClose('#pop_signup');"><span class="blind">닫기</span></a>
+								</div>
+							</div>
+							<!-- //popWrap -->
+						</div>
+
+						<div id="pop_cancel" style="display:none;">
+							<!-- popWrap -->
+							<div class="popWrap450">
+								<div class="popHead">
+									<h1>취소하기</h1>
+								</div>
+								<div class="popContents">
+									<div class="alert_bx">
+										<p class="msg">등록을 취소 하시겠습니까?</p>
+									</div>
+									<div class="btnArea">
+										<a href="#" id="confirm" class="btn_type_big_bcgr first">확인</a>
+										<a href="#" onclick="CommonUI.modalClose('#pop_cancel');" class="btn_type_big_whbd">취소</a>
+									</div>
+								</div>
+								<div class="btn_pop_close">
+									<a href="#" onclick="CommonUI.modalClose('#pop_cancel');"><span class="blind">닫기</span></a>
+								</div>
+							</div>
+							<!-- //popWrap -->
+						</div>
+
+						<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/jquery.cookie.js"></script>
+						<!--<script src="http://inquiry.wemakeprice.com:8080/js/worker/asignee.list.js?v=1571190174591"></script>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--contents_wrp:e-->
+		<!--admin_conts_wrp:e-->
+	</div>
+	<!--inquiry_admin_wrp:e-->
+</body>
+</html>

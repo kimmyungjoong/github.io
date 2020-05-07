@@ -1,0 +1,494 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="description" content="위메프 통합문 시스템">
+	<meta name="keywords" content="위메프 통합문의 시스템">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<title>관리메뉴 &gt; 자주묻는질문(검색) : 통합문의</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="lib/jqwidgets/styles/jqx.base.css" />
+	<link rel="stylesheet" href="css/common_admin.css">
+	<link rel="stylesheet" href="css/inquiry_admin.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.custom.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.jkun.tabbrowse.css">
+	<link rel="stylesheet" type="text/css" href="css/base-layout.css">
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.common.icon.css">
+	<link rel="stylesheet" type="text/css" href="lib/fileupload/css/jquery.fileupload.css" />
+
+	<!-- Library -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/jquery-1.11.0.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/jquery-ui.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/moment.min.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/ui.srcCommon.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/placeholders.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/customSelect.min.js"></script>
+
+	<!-- jqwidgets -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxcore.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxdatetimeinput.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxcalendar.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/jqxtooltip.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/globalization/globalize.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/jqwidgets/globalization/globalize.culture.ko-KR.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/jquery.jkun.tabbrowse.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/js-dev-helper.jkun.js"></script>
+	<script src="http://inquiry.wemakeprice.com:8080/js/ui.common-extend.js"></script>
+
+	<!-- fileupload -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/vendor/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/load-image.min.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload-process.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.fileupload-image.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/lib/fileupload/jquery.filedownload.js"></script>
+
+	<!-- 통합시스템 공통 js -->
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.common.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.inquiry.js"></script>
+	<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/inquiry/ui.back.js"></script>
+
+	<!-- User Defined Java script -->
+	<script src="http://inquiry.wemakeprice.com:8080/js/common/module.js"></script>
+
+	<!-- Page Context -->
+	<script>
+		var CONTEXT_PATH = "";
+	</script>
+
+	<style>
+		/* 20160725 common_admin.css의 경우 퍼블리셔가 업데이트 할 경우가 발생할수 있어 딤드관련 css 추가합니다. */
+		.loading {
+			position: absolute;
+			z-index: 100001;
+			display: block;
+		}
+
+		.dimmLoading {
+			overflow: hidden;
+		}
+
+		.dimmLoading:after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 10000;
+			display: block;
+			height: 100%;
+			background: #000;
+			content: "";
+			opacity: .2;
+			filter: alpha(opacity=20);
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+
+			var flag = window.location.href.split("/");
+			if (flag[3] == "admin") {
+				$(".left_menu_wrp .left_menu #menu04").addClass("on");
+			} else if (flag[3] == "inquirer") {
+				$(".left_menu_wrp .left_menu #menu02").addClass("on");
+			} else if (flag[3] == "assignee") {
+				$(".left_menu_wrp .left_menu #menu03").addClass("on");
+			} else if (flag[3] == "main") {
+				$(".left_menu_wrp .left_menu #menu01").addClass("on");
+			}
+		});
+
+		function getCookie(name) {
+			var nameOfCookie = name + "=";
+			var x = 0
+
+			while (x <= document.cookie.length) {
+				var y = (x + nameOfCookie.length);
+				if (document.cookie.substring(x, y) == nameOfCookie) {
+					if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+						endOfCookie = document.cookie.length;
+					return unescape(document.cookie.substring(y, endOfCookie));
+				}
+				x = document.cookie.indexOf(" ", x) + 1;
+				if (x == 0)
+					break;
+			}
+			return "";
+		}
+	</script>
+</head>
+
+<body>
+	<input type="hidden" name="inStartdate" value="">
+	<input type="hidden" name="inEnddate" value="">
+	<input type="hidden" name="asStartdate" value="">
+	<input type="hidden" name="asEnddate" value="">
+	<!--inquiry_admin_wrp:s-->
+	<div class="inquiry_admin_wrp">
+		<!--header:s-->
+		<div class="header">
+			<div class="top_bar">
+				<div class="logo"><img src="/img/logo.gif" alt="위메프"></div>
+				<div class="my_info">운영디자인팀 <span class="name">김명중</span>님</div>
+			</div>
+			<h1 class="title"><span class="blind">통합문의시스템</span></h1>
+		</div>
+		<!--header:e-->
+		<!--admin_conts_wrp:s-->
+		<div class="admin_conts_wrp">
+			<!--left_menu_wrp:s-->
+			<script src="http://inquiry.wemakeprice.com:8080/js/layout/menu.js"></script>
+
+			<div class="left_menu_wrp">
+				<ul class="left_menu">
+					<li id=""><a href="#none">HOME</a></li>
+					<li id=""><a href="#none">공지사항</a></li>
+					<li id=""><a href="#none">자주묻는질문</a></li>
+					<li id=""><a href="#none">문의 리스트</a></li>
+					<li id=""><a href="#none">처리 리스트</a></li>
+					<li id=""><a href="#none">시스템 관리</a></li>
+					<li id="" class="on open">
+						<a href="#none">관리메뉴</a>
+						<ol>
+							<li><a href="#">공지사항</a></li>
+							<li class="on"><a href="#">자주묻는질문</a></li>
+						</ol>
+					</li>
+				</ul>
+			</div>
+			<!--left_menu_wrp:e-->
+			<!--contents_wrp:s-->
+			<div class="contents_wrp">
+				<div class="contents">
+					<div class="cont_inner">
+						<input type="hidden" id="myId" value="2016110023" />
+						<input type="hidden" id="myCateIds" value="[51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 79, 80, 107, 110, 114, 128, 132, 135, 160, 161, 162, 163]" />
+						<input type="hidden" id="isManager" value="n" />
+						<input type="hidden" id="isManageIds" value="[]" />
+							<div class="title_area">
+								<h1>관리메뉴 &gt; 자주묻는질문</h1>
+								<ol class="location">
+									<li>통합문의시스템 &gt;</li>
+									<li>관리메뉴 &gt;</li>
+									<li class="cur_page">자주묻는질문</li>
+								</ol>
+							</div>
+							<div class="search_bx">
+								<div class="title_set">
+									<h2 class="tb_title">상세 검색</h2>
+								</div>
+								<table class="tbl_search" width="100%">
+									<colgroup>
+										<col style="width:140px;">
+										<col style="width:*;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">등록일</th>
+											<td>
+												<input type="text" class="startDateUi"> ~ <input type="text" class="endDateUi">
+												<input type="checkbox" id="add_all" class="chk_anyone" checked>
+												<label for="add_all">전체</label>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">노출</th>
+											<td class="radio_td">
+												<input type="radio" name="show_radio" id="chk01" checked><label for="chk01">전체</label>
+												<input type="radio" name="show_radio" id="chk02"><label for="chk02">노출</label>
+												<input type="radio" name="show_radio" id="chk03"><label for="chk03">미노출</label>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">스티커</th>
+											<td class="radio_td">
+												<input type="radio" name="sti_radio" id="chk04" checked><label for="chk04">전체</label>
+												<input type="radio" name="sti_radio" id="chk05"><label for="chk05">미지정</label>
+												<input type="radio" name="sti_radio" id="chk06"><label for="chk06">NEW</label>
+												<input type="radio" name="sti_radio" id="chk07"><label for="chk07">긴급</label>
+												<input type="radio" name="sti_radio" id="chk08"><label for="chk08">필독</label>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">시스템</th>
+											<td class="radio_td">
+												<input type="radio" name="sys_radio" id="chk09" checked><label for="chk09">전체</label>
+												<input type="radio" name="sys_radio" id="chk10"><label for="chk10">인사교육</label>
+												<input type="radio" name="sys_radio" id="chk11"><label for="chk11">프론트/어드민/파트너</label>
+												<input type="radio" name="sys_radio" id="chk12"><label for="chk12">정산시스템</label>
+												<input type="radio" name="sys_radio" id="chk13"><label for="chk13">총무</label>
+												<input type="radio" name="sys_radio" id="chk14"><label for="chk14">통계</label>
+												<input type="radio" name="sys_radio" id="chk15"><label for="chk15">그룹웨어</label>
+											</td>
+										</tr>
+										<tr>
+											<th>카테고리</th>
+											<td>
+												<select id="first_category" style="width:224px;">
+													<option>전체</option>
+												</select>
+												<select id="second_category" style="width:224px;">
+													<option>전체</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">등록자</th>
+											<td>
+												<input type="text" id="" class="txt_input" placeholder="이름 또는 사번을 입력하세요" style="width:280px;">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">제목/내용</th>
+											<td>
+												<input type="text" id="" class="txt_input" placeholder="제목 또는 내용을 입력해주세요" style="width:448px;">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea_right">
+								<a class="btnType_cSrch_s">검색</a><a class="btnType_cSrch_rst">초기화</a>
+							</div>
+							<div class="info_set">
+								<div class="btnArea_right" id="pagePerRow">
+									<a href="#" class="btnType_receipt">등록하기</a>
+									<select style="width:60px;">
+										<option>30</option>
+										<option>50</option>
+										<option>100</option>
+										<option>150</option>
+									</select>
+								</div>
+							</div>
+							<table class="tb_basic" width="100%;">
+								<colgroup>
+									<col style="width:42px">
+									<col style="width:54px">
+									<col style="width:56px">
+									<col style="width:134px">
+									<col style="width:94px">
+									<col style="width:94px">
+									<col style="width:*">
+									<col style="width:98px">
+									<col style="width:76px">
+									<col style="width:136px">
+								</colgroup>
+								<thead>
+									<th>번호</th>
+									<th>노출</th>
+									<th>스티커</th>
+									<th>시스템</th>
+									<th>카테고리</th>
+									<th>상세카테고리</th>
+									<th>제목</th>
+									<th>등록자</th>
+									<th>수정자</th>
+									<th>등록일(수정일)</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>100</td>
+										<td>노출</td>
+										<td>미지정</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>홍길동<span class="num">(2013112200)</span></td>
+										<td>미지정</td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>99</td>
+										<td>노출</td>
+										<td>필독</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>김길동<span class="num">(2013112200)</span></td>
+										<td>이말자<span class="num">(2013112200)</span></td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>98</td>
+										<td>노출</td>
+										<td>미지정</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>홍길동<span class="num">(2013112200)</span></td>
+										<td>미지정</td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>97</td>
+										<td>노출</td>
+										<td>필독</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>김길동<span class="num">(2013112200)</span></td>
+										<td>이말자<span class="num">(2013112200)</span></td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>96</td>
+										<td>노출</td>
+										<td>미지정</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>홍길동<span class="num">(2013112200)</span></td>
+										<td>미지정</td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>95</td>
+										<td>노출</td>
+										<td>필독</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>김길동<span class="num">(2013112200)</span></td>
+										<td>이말자<span class="num">(2013112200)</span></td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>94</td>
+										<td>노출</td>
+										<td>미지정</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>홍길동<span class="num">(2013112200)</span></td>
+										<td>미지정</td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>93</td>
+										<td>노출</td>
+										<td>필독</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>김길동<span class="num">(2013112200)</span></td>
+										<td>이말자<span class="num">(2013112200)</span></td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>92</td>
+										<td>노출</td>
+										<td>미지정</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>홍길동<span class="num">(2013112200)</span></td>
+										<td>미지정</td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+									<tr>
+										<td>91</td>
+										<td>노출</td>
+										<td>필독</td>
+										<td>프론트/어드민/파트너</td>
+										<td>상품등록/수정</td>
+										<td>배송2.0/WAPI</td>
+										<td class="title"><a href="#">딜 판매기간 연장을 하고 싶어요.</a></td>
+										<td>김길동<span class="num">(2013112200)</span></td>
+										<td>이말자<span class="num">(2013112200)</span></td>
+										<td>2019-08-13<span class="num">(2019-09-10 18:58-55)</span></td>
+									</tr>
+								</tbody>
+							</table>
+							<input type="hidden" name="page" value="1">
+							<input type="hidden" name="nowblock" value="0">
+							<div class="page_stepper">
+								<aside class="paging">
+									<a href="#" class="btn prev"><span class="blind">prev</span></a>
+									<ol>
+										<li class="on"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">6</a></li>
+										<li><a href="#">7</a></li>
+										<li><a href="#">8</a></li>
+										<li><a href="#">9</a></li>
+										<li><a href="#">10</a></li>
+									</ol>
+									<a href="#" class="btn next"><span class="blind">next</span></a>
+								</aside>
+							</div>
+
+						<div id="pop" style="display:none;">
+							<!-- popWrap -->
+							<div class="popWrap450">
+								<div class="popHead">
+									<h1>일괄처리</h1>
+								</div>
+								<div class="popContents">
+									<div class="alert_bx">
+										<p class="msg"><span class="num">10건</span>에 대해 일괄처리 완료 하시겠습니까?</p>
+									</div>
+									<div class="btnArea">
+										<a href="#" id="confirm" class="btn_type_big_bcgr first">확인</a>
+										<a href="#" onclick="CommonUI.modalClose('#pop');" class="btn_type_big_whbd">취소</a>
+									</div>
+								</div>
+								<div class="btn_pop_close">
+									<a href="#" onclick="CommonUI.modalClose('#pop');"><span class="blind">닫기</span></a>
+								</div>
+							</div>
+							<!-- //popWrap -->
+						</div>
+
+						<div id="excelPop" style="display:none;">
+							<!-- popWrap -->
+							<div class="popWrap450">
+								<div class="popHead">
+									<h1>일괄처리</h1>
+								</div>
+								<div class="popContents">
+									<div class="alert_bx">
+										<p class="msg">리스트 결과를 엑셀로 다운로드 하시겠습니까?</p>
+									</div>
+									<div class="btnArea">
+										<a href="#" id="confirmExcel" class="btn_type_big_bcgr first">확인</a>
+										<a href="#" onclick="CommonUI.modalClose('#excelPop');" class="btn_type_big_whbd">취소</a>
+									</div>
+								</div>
+								<div class="btn_pop_close">
+									<a href="#" onclick="CommonUI.modalClose('#excelPop');"><span class="blind">닫기</span></a>
+								</div>
+							</div>
+							<!-- //popWrap -->
+						</div>
+
+						<script type="text/javascript" src="http://inquiry.wemakeprice.com:8080/js/jquery.cookie.js"></script>
+						<script src="http://inquiry.wemakeprice.com:8080/js/worker/asignee.list.js?v=1571190174591"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--contents_wrp:e-->
+		<!--admin_conts_wrp:e-->
+	</div>
+	<!--inquiry_admin_wrp:e-->
+</body>
+</html>

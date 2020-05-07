@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.header{z-index:0;}
+.header .title{background-color:#cf4242;}
+.left_menu_wrp{top:92px;z-index:1;}
+.left_menu{padding-top:0px;}
+.left_menu > li.on > a{color:#cf4242;}
+.btn_type_big_bcgr{background-color:#cf4242;border:1px solid #cf4242;}
+.detail_info .num{color:#e13434;}
+.btnType_receipt{background-color:#cf4242;}
+
+.tb_basic tr.check_tbl td{background-color:#fbf7f7;}/*사업부관리*/
+.tb_basic tr.check_tbl td.checkTd:before{background-color:#e13434;}
