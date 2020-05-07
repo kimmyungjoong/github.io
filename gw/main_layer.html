@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>위메프 그룹웨어시스템</title>
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="/portal/css/gnb.css">
+    <script src="/portal/js/jquery.min.js"></script>
+    <script src="/portal/js/ui.common.js"></script>
+    <script src="/portal/js/ui.gw.js?v=636842866862408099"></script>
+    <script src="/portal/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var _index_1 = 0;
+        var _index_2 = 0;
+        var _index_3 = 0;
+        var _index_4 = 0;
+        $(function () {
+
+            _index_1 = $("#selection_group_1 option:selected").val();
+            _index_2 = $("#selection_group_2 option:selected").val();
+            _index_3 = $("#selection_group_3 option:selected").val();
+            _index_4 = $("#selection_group_4 option:selected").val();
+
+            var diabled_options = "1";
+            $("select").each(function (i) {
+                if ((i) > diabled_options) {
+                    $(this).attr("disabled", true);
+                }
+            });
+
+            $("#selection_group_1").change(function (ev) {
+                if(($(this).val() == $("#selection_group_2 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_3 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_4 option:selected").val()))
+                {
+                    if ($(this).val() != 0)
+                    {
+                        alert('이미 선택한 시스템입니다.'); $(this).val(_index_1).attr("selected", "selected"); return;
+                    }
+                }
+                _index_1 = $(this).val();
+                return;
+            });
+            $("#selection_group_2").change(function (ev) {
+                if (($(this).val() == $("#selection_group_1 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_3 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_4 option:selected").val())) {
+                    if ($(this).val() != 0) {
+                        alert('이미 선택한 시스템입니다.'); $(this).val(_index_2).attr("selected", "selected"); return;
+                    }
+                }
+                if ($(this).val() == 0)
+                {
+                    $("#selection_group_3").val(0).attr("selected", "selected");
+                    $("#selection_group_4").val(0).attr("selected", "selected");
+                    $("#selection_group_3").attr("disabled", true);
+                    $("#selection_group_4").attr("disabled", true);
+                }
+                else
+                {
+                    $("#selection_group_3").attr("disabled", false);
+                    $("#selection_group_4").attr("disabled", true);
+                }
+                _index_2 = $(this).val();
+                return;
+            });
+            $("#selection_group_3").change(function (ev) {
+                if (($(this).val() == $("#selection_group_1 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_2 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_4 option:selected").val())) {
+                    if ($(this).val() != 0) {
+                        alert('이미 선택한 시스템입니다.'); $(this).val(_index_3).attr("selected", "selected"); return;
+                    }
+                }
+                if ($(this).val() == 0) {
+                    $("#selection_group_4").val(0).attr("selected", "selected");
+                    $("#selection_group_4").attr("disabled", true);
+                }
+                else {
+                    $("#selection_group_4").attr("disabled", false);
+                }
+                _index_3 = $(this).val();
+                return;
+            });
+            $("#selection_group_4").change(function (ev) {
+                if ($(this).val() == "") return;
+                if (($(this).val() == $("#selection_group_1 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_2 option:selected").val()) ||
+                    ($(this).val() == $("#selection_group_3 option:selected").val())) {
+                    if ($(this).val() != 0) {
+                        alert('이미 선택한 시스템입니다.'); $(this).val(_index_4).attr("selected", "selected"); return;
+                    }
+                }
+                _index_4 = $(this).val();
+                return;
+            });
+
+            $("a[name=setupSave]").click(function () {
+                $("form").submit();
+            });
+        });
+    </script>
+</head>
+<body style="margin-top:0px; margin-left:0px;">
+<form action="/portal/Home/NoticeSetupPop" method="post">        <!-- popWrap -->
+    <div class="popWrap450">
+        <div class="popHead">
+            <h1>다운로드 (그룹웨어)</h1>
+        </div>
+        <div class="popContents">
+          <div class="down_bx v2">
+              <ul class="down_list">
+                  <li onclick="window.open('http://gw.wemakeprice.com/wIESetting.exe')">
+                      <div class="down_tit">
+                          <strong>wlEsetting</strong>
+                          <em>그룹웨어 리스트가 보이지 않을 경우 설치</em>
+                      </div>
+                      <div class="down_conts">
+                          <a class="btn dn">다운로드</a>
+                      </div>
+                  </li>
+                  <li onclick="window.open('http://gw.wemakeprice.com/Upload_Portal/KaoniComponent.zip')">
+                      <div class="down_tit">
+                          <strong>그룹웨어 컴포넌트</strong>
+                          <em>전자결재 첨부/의견 문제 있을 경우 설치</em>
+                      </div>
+                      <div class="down_conts">
+                          <a class="btn dn">다운로드</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+            <!-- btnArea -->
+            <div class="btnArea">
+                <a href="javascript:;" onclick="parent.bPopupObject.close()" class="btn_type_big_whbd">취소</a>
+            </div>
+            <!-- //btnArea -->
+        </div>
+        <div class="btn_pop_close">
+            <a href="javascript:;" onclick="parent.bPopupObject.close()"><span class="blind">닫기</span></a>
+        </div>
+    </div>
+    <!-- //popWrap -->
+    <!-- //끝 -->
+</form>
+</body></html>

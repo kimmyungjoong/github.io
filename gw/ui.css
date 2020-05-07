@@ -254,20 +254,27 @@ header.m_open:after{position:absolute;display:block;bottom:-52px;left:0px;conten
 .banner_bx .bx-pager a{display:block;width:6px;height:6px;margin-left:5px;background-color:#bfbfbf;text-indent:-9999px;}
 .banner_bx .bx-pager a.active{background-color:#e01818;}
 .banner_bx .bx-pager a[data-slide-index^="0"] {margin-left:0px;}
-/* 20170718 UXUI-863 수정 */
-/* 20181228 DESIGNOP-12 수정 */
+
+/* 20190128 DESIGNOP-12 수정 */
 .down_bx{float:left;width:238px;margin-top:23px;}
 .down_bx .down_list{overflow:hidden;margin-top:13px;}
-.down_bx .down_list li{width:208px;height:33px;padding:0px 15px 0px 13px;margin-bottom:3px;border:1px solid #dbdbdb;background-color:#fff;}
-.down_bx .down_list li .down_tit strong{display: block;padding-top:7px;color:#555;font-size:14px;letter-spacing:-0.5px;line-height:18px;font-weight:normal;}
-.down_bx .down_list li:hover {border-color:#888;background-color:#888;cursor:pointer;}
+.down_bx .down_list li{width:196px;height:46px;padding:0px 20px;margin-bottom:5px;border:1px solid #dadada;background-color:#fff;}
+.down_bx .down_list li .down_tit strong{display: block;padding-top:14px;color:#555;font-size:16px;letter-spacing:-0.5px;line-height:18px;font-weight:normal;}
+.down_bx .down_list li:hover {border-color:#777;background-color:transparent;cursor:pointer;}
 .down_bx .down_list li:hover .down_conts{display:block;position:relative;}
-.down_bx .down_list li:hover .down_tit{display:none;}
 .down_bx .down_list li .down_conts{display:none;}
 .down_bx .down_list li .down_conts span{display:block;padding:8px 3px 0px 0;color:#fff;font-size:11px;letter-spacing:-1px;line-height:15px;}
-.down_bx .down_list li .down_conts .btn{position:absolute;top:9px;right:-6px;width:11px;height:13px;background:url(btn_download_v181228.png) 0px 0 no-repeat;text-indent:-9999px;font-size:0;}
-/* 20181228 DESIGNOP-12 수정 */
-/* //20170718 UXUI-863 수정 */
+.down_bx .down_list li .down_conts .btn{position:absolute;top:-15px;right:-4px;width:13px;height:13px;background:url(btn_layer_on.png) 0 0 no-repeat;text-indent:-9999px;font-size:0;}
+.down_bx .down_list li .down_conts .btn.page_go{width:14px;height:14px; background-image: url(btn_page_go.png);top:-16px;right:-5px}
+
+.down_bx.v2{float:none;width:auto;margin-top:0;margin-bottom:3px}
+.down_bx.v2 .down_list{margin-top:0}
+.down_bx.v2 .down_list li{width:auto;height:68px}
+.down_bx.v2 .down_list li .down_tit strong{font-size:18px}
+.down_bx.v2 .down_list li .down_tit em{display:block;color:#999; margin-top: 7px}
+.down_bx.v2 .down_list li .down_conts .btn.dn{width:15px;height:14px; background-image: url(btn_dn_new.png);top:-28px;right:-5px}
+/* //20190128 DESIGNOP-62 수정 */
+
 
 .footer_wrp{clear:both;min-width:1100px;padding-top:26px;border-top:1px solid #dbdbdb;}
 .footer_wrp footer{overflow:hidden;width:1100px;height:104px;margin:0px auto;}
@@ -357,7 +364,7 @@ header.m_open:after{position:absolute;display:block;bottom:-52px;left:0px;conten
 
 
 .btn_pop_close{position:absolute;right:15px;top:15px;}
-.btn_pop_close a{display:block;width:21px;height:21px;color:#666;font-size:12px;background:url(../images/btn_close.png) 0px 0px no-repeat;}
+.btn_pop_close a{display:block;width:21px;height:21px;color:#666;font-size:12px;background:url(btn_close.png) 0px 0px no-repeat;}
 .popContents .msg_noti{margin-top:8px;color:#999;}
 
 /*button*/

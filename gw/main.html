@@ -580,83 +580,56 @@
             <!--qa:e-->
 
             <!--down_bx:s-->
-            <!-- 20170718 UXUI-863 수정 -->
-            <!-- 20181228 DESIGNOP-12 수정 -->
+            <!-- 20190128 DESIGNOP-62 수정 -->
             <div class="down_bx">
                 <div class="tit_set">
                     <h3>다운로드</h3>
                     <a href="javascript:;" class="btn_more" style="display:none;">더보기</a>
                 </div>
                 <ul class="down_list">
-                    <li>
-                        <div class="down_tit">
-                            <strong>wIEsetting</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>그룹웨어 리스트 보이지 않는 경우</span>
-                            <a class="btn" href="http://gw.wemakeprice.com/wIESetting.exe">다운로드</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="down_tit">
-                            <strong>그룹웨어 컴포넌트</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>전자결재 첨부/의견 문제있을 경우</span>
-                            <a class="btn" href="http://gw.wemakeprice.com/Upload_Portal/KaoniComponent.zip">다운로드</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="down_tit">
-                            <strong>HR 컴포넌트</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>HR 증명서류 인쇄 문제있을 경우</span>
-                            <a class="btn" href="http://gw.wemakeprice.com/upload_portal/hr_download_setup_files.zip">다운로드</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="down_tit">
-                            <strong>HR 컴포넌트 - 패치</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>HR 증명서류 인쇄 문제있을 경우 (추가)</span>
-                            <a class="btn" href="http://gw.wemakeprice.com/upload_portal/6.0u_ocx_patch.zip">다운로드</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="down_tit">
-                            <strong>Silverlight PlugIN</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>HR 증명서류 첨부 문제있을 경우</span>
-                            <a class="btn" href="https://www.microsoft.com/silverlight/" target="_blank">다운로드</a>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="down_tit">
-                            <strong>회사소개서/공용서식</strong>
-                        </div>
-                        <div class="down_conts">
-                            <span>회사소개서/업무 문서 서식</span>
-                            <a class="btn" href="https://wmp.sharepoint.com/wmpcultule/DocLib/Forms/AllItems.aspx?newTargetListUrl=%2Fwmpcultule%2FDocLib&amp;id=%2Fwmpcultule%2FDocLib%2F%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C%20%EB%B0%8F%20%EA%B3%B5%EC%9A%A9%EC%84%9C%EC%8B%9D&amp;sortField=LinkFilename&amp;isAscending=true" target="_blank">다운로드</a>
-                            <!-- <a class="btn" href="https://wmp.sharepoint.com/wmpcultule/DocLib/Forms/AllItems.aspx?newTargetListUrl=%2Fwmpcultule%2FDocLib&id=%2Fwmpcultule%2FDocLib%2F%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C%20%EB%B0%8F%20%EA%B3%B5%EC%9A%A9%EC%84%9C%EC%8B%9D&sortField=LinkFilename&isAscending=true" target="_blank">다운로드</a> -->
-                        </div>
-                    </li>
-                    <li>
+                    <li onclick="open_popup('MessengerPopUp_20190117', '20190117', '550', '700', '0');">
                         <div class="down_tit">
                             <strong>사내 메신저</strong>
                         </div>
                         <div class="down_conts">
-                            <span>사내 메신저 클라이언트</span>
-                            <a class="btn" href="#" target="_blank">다운로드</a>
+                            <a class="btn">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>그룹웨어</strong>
+                        </div>
+                        <div class="down_conts">
+                            <a class="btn">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>HR</strong>
+                        </div>
+                        <div class="down_conts">
+                            <a class="btn">다운로드</a>
+                        </div>
+                    </li>
+                    <li onclick="window.open('https://wmp.sharepoint.com/wmpcultule/DocLib/Forms/AllItems.aspx?newTargetListUrl=%2Fwmpcultule%2FDocLib&id=%2Fwmpcultule%2FDocLib%2F%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C%20%EB%B0%8F%20%EA%B3%B5%EC%9A%A9%EC%84%9C%EC%8B%9D&sortField=LinkFilename&isAscending=true', '_blank')">
+                        <div class="down_tit">
+                            <strong>회사 소개서/공용 서식</strong>
+                        </div>
+                        <div class="down_conts">
+                            <a class="btn page_go">다운로드</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="down_tit">
+                            <strong>보안</strong>
+                        </div>
+                        <div class="down_conts">
+                            <a class="btn">다운로드</a>
                         </div>
 
                     </li>
                 </ul>
             </div>
-            <!-- //20181228 DESIGNOP-12 수정 -->
             <!-- //20170718 UXUI-863 수정 -->
             <!--down_bx:e-->
         </article>
