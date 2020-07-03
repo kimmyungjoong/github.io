@@ -27,8 +27,7 @@ a:hover, a:active, a:focus{text-decoration:underline; font-weight:bold;}
 #wrap{width:960px; margin:20px auto}
 header{margin:0 0 30px 0; *zoom:1; display:block;}
 header:after{content:""; clear:both; display:block;}
-header h1 a{width:430px; height:72px; background:url(../images/home/logo.gif) no-repeat; text-indent:-9999px; display:block; float:left;}
-header h1 a.mz{background:url(../images/home/logo_mz.gif) no-repeat}
+header h1 a.kakakopay{width:430px; height:72px;background:url(../images/home/logo_kakaopay.png) no-repeat;text-indent:-9999px; display:block; float:left;}
 nav.gnb{width:280px; margin:25px 0 0 0; float:right; display:block;}
 nav.gnb ul li{float:left; margin:8px 0;}
 nav.gnb ul li a{display:block;}
@@ -37,7 +36,7 @@ nav.gnb ul li.coverletter a{width:79px; height:18px; background:url(../images/ho
 nav.gnb ul li.portfolio a{width:124px; height:18px; background:url(../images/home/gnbImg.gif) 0 -37px no-repeat; text-indent:-9999px;}
 #container{width:930px; margin:0 0 30px 30px;}
 #container section.index{display:block; padding:100px 0;}
-#container section.index p{width:685px; height:201px; background:url(../images/home/maintext.gif) no-repeat; text-indent:-9999px;}
+#container section.index p{width:685px; height:201px; background:url(../images/home/maintext.png) no-repeat; text-indent:-9999px;}
 #container article h2{font-size:36px;margin:0 0 20px 0;color:#221f1f}
 footer{width:960px; height:22px; background:url(../images/home/footer.gif) no-repeat; text-indent:-9999px; display:block;}
 
